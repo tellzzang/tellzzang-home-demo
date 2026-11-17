@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="apple">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>거시경제 지표 분석 미니 보고서 가이드 | 운양고 경제 클래스</title>
+  <meta name="description" content="수행평가 거시경제 지표 분석 미니 보고서의 모션 그래프 예시와 채점 배점을 확인하는 페이지입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="../assets/shared.css" />
+</head>
+<body>
+  <div class="page-curtain" id="pageCurtain" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand" data-transition>
+        <span aria-hidden="true">📚</span>
+        <span>Tellzzang Class</span>
+        <span class="brand-pill">수행평가 가이드</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="주 메뉴">
+        <a href="../index.html" class="nav-item" data-transition>홈</a>
+        <a href="../ws-03/index.html" class="nav-item" data-transition>03호 학습지</a>
+        <a href="../report/index.html" class="nav-item active" data-transition>수행평가</a>
+        <a href="../clinic/index.html" class="nav-item" data-transition>지필 클리닉</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeCycleBtn" type="button">🍏 애플 클린</button>
+        <a class="cta-sm" href="https://app.notion.com/p/41b973637abb81f6a1e0e76d2726765d" target="_blank" rel="noopener noreferrer">노션 페이지 ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="apple-hero-banner apple-hero-dark reveal">
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="container hero-content">
+        <div class="breadcrumb" style="color: #a1a1a6;">
+          <a href="../index.html" data-transition>홈</a> <span>›</span>
+          <span>수행평가</span> <span>›</span>
+          <span style="color: #fff;">미니 보고서 가이드</span>
+        </div>
+        <h1 class="hero-title">
+          데이터로 말하다.<br />
+          <span class="text-gradient">거시경제 분석 보고서.</span>
+        </h1>
+        <p class="hero-desc">
+          제출 마감: <strong>이번 주 금요일 17:00</strong> · 분량: A4 1장 내외 · 한국은행 ECOS / 통계청 KOSIS 공식 수치 기반 작성 가이드입니다.
+        </p>
+        <div class="hero-buttons">
+          <a href="#chart-guide" class="btn-apple-primary">그래프 예시 보기 ↓</a>
+          <a href="../ws-03/index.html" class="btn-apple-secondary" data-transition>← 03호 학습지 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Motion SVG Macro Chart Example -->
+    <section id="chart-guide" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">ANIMATED DATA VISUALIZATION</span>
+          <h2>📈 보고서 그래프 모션 예시 (연도 클릭)</h2>
+          <p class="section-sub">연도 버튼을 눌러 각 시점의 지표 간 관계(성장·물가·고용)를 어떻게 해석하는지 참고하세요.</p>
+        </div>
+
+        <div class="glass-panel">
+          <div class="toolbar">
+            <div class="filter-scroll">
+              <button class="pill-btn active" data-yr="2024" type="button">2024년 포인트</button>
+              <button class="pill-btn" data-yr="2025" type="button">2025년 포인트</button>
+              <button class="pill-btn" data-yr="2026" type="button">2026년 포인트</button>
+            </div>
+            <span id="yrBadge" class="mono" style="color: var(--accent); font-weight: 700;">예시 해석 모드</span>
+          </div>
+
+          <div style="padding: 1rem; border-radius: 16px; background: var(--bg-alt); border: 1px solid var(--border); margin-bottom: 1.2rem;">
+            <svg viewBox="0 0 600 180" style="width: 100%; height: auto; display: block;" aria-label="거시경제 지표 모션 차트 예시">
+              <line x1="40" y1="145" x2="560" y2="145" stroke="currentColor" stroke-opacity="0.18" />
+              <line x1="40" y1="90" x2="560" y2="90" stroke="currentColor" stroke-opacity="0.12" stroke-dasharray="4 4" />
+              <path class="draw-line" d="M 70 110 C 170 95, 230 62, 300 72 C 380 82, 460 48, 530 40" fill="none" stroke="#0071e3" stroke-width="4" stroke-linecap="round" />
+              <path class="draw-line" d="M 70 50 C 170 72, 240 85, 300 96 C 380 105, 450 92, 530 98" fill="none" stroke="#ff9f0a" stroke-width="4" stroke-linecap="round" />
+              <path class="draw-line" d="M 70 120 C 180 118, 240 124, 300 116 C 380 112, 450 118, 530 114" fill="none" stroke="#30d158" stroke-width="4" stroke-linecap="round" />
+              <circle id="yrDot" cx="70" cy="110" r="8" fill="#0071e3" stroke="#ffffff" stroke-width="3" style="transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);" />
+              <text x="70" y="166" text-anchor="middle" fill="currentColor" font-size="12" opacity="0.65">2024</text>
+              <text x="300" y="166" text-anchor="middle" fill="currentColor" font-size="12" opacity="0.65">2025</text>
+              <text x="530" y="166" text-anchor="middle" fill="currentColor" font-size="12" opacity="0.65">2026</text>
+            </svg>
+          </div>
+
+          <div id="yrNote" style="padding: 1rem 1.2rem; border-radius: 14px; background: var(--accent-soft); font-size: 0.94rem;">
+            <strong>2024년 예시 코멘트:</strong> 물가 상승 압력이 높았던 시기의 소비 둔화와 성장률 변화를 %와 %p 단위로 구분해 서술합니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evaluation Rubric -->
+    <section class="section section-alt reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">EVALUATION RUBRIC</span>
+          <h2>🏆 수행평가 채점 배점 (100%)</h2>
+          <p class="section-sub">단순 수치 나열이 아니라 지표 간 논리적 연결이 핵심입니다.</p>
+        </div>
+
+        <div class="glass-panel">
+          <div class="metric-bars">
+            <div>
+              <div class="bar-head"><span>1. 통계 정확성 (공식 기관 최신 수치 &amp; 출처 명기)</span><span class="mono">40%</span></div>
+              <div class="bar-track"><div class="bar-fill fill-blue" style="width: 40%;"></div></div>
+            </div>
+            <div>
+              <div class="bar-head"><span>2. 그래프 해석 (성장·물가·고용 상관관계 분석)</span><span class="mono">40%</span></div>
+              <div class="bar-track"><div class="bar-fill fill-green" style="width: 40%;"></div></div>
+            </div>
+            <div>
+              <div class="bar-head"><span>3. 형식 완결성 (분량 준수 &amp; % / %p 단위 구분)</span><span class="mono">20%</span></div>
+              <div class="bar-track"><div class="bar-fill fill-pink" style="width: 20%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pager-grid" style="margin-top: 2.5rem;">
+          <a href="../ws-03/index.html" class="pager-card" data-transition>
+            <span class="pager-dir">← 이전 노션 하위 페이지</span>
+            <strong>[03호] 실업률 통계의 착시와 고용지표</strong>
+          </a>
+          <a href="../clinic/index.html" class="pager-card" style="text-align: right;" data-transition>
+            <span class="pager-dir">다음 노션 하위 페이지 →</span>
+            <strong>2학기 지필평가 대비 &amp; 클리닉 안내</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© 2026 운양고 경제 클래스 · Sub-page 02 (`report`)</p>
+      <p class="mono">Notion ID: 41b97363-7abb-81f6-a1e0-e76d2726765d</p>
+    </div>
+  </footer>
+
+  <nav class="mobile-dock" aria-label="모바일 하단 메뉴">
+    <a href="../index.html" class="dock-tab" data-transition><span>🏠</span><span>홈</span></a>
+    <a href="../ws-03/index.html" class="dock-tab" data-transition><span>📄</span><span>03호</span></a>
+    <a href="../report/index.html" class="dock-tab active" data-transition><span>📊</span><span>보고서</span></a>
+    <a href="../clinic/index.html" class="dock-tab" data-transition><span>🎯</span><span>클리닉</span></a>
+  </nav>
+
+  <script src="../assets/motion.js"></script>
+  <script>
+    (() => {
+      const notes = {
+        "2024": { x: 70, y: 110, text: "<strong>2024년 예시 코멘트:</strong> 물가 상승 압력이 높았던 시기의 소비 둔화와 성장률 변화를 %와 %p 단위로 구분해 서술합니다." },
+        "2025": { x: 300, y: 72, text: "<strong>2025년 예시 코멘트:</strong> 물가가 완만히 안정되면서 실질 구매력과 내수 흐름이 어떻게 변했는지 그래프로 연결하세요." },
+        "2026": { x: 530, y: 40, text: "<strong>2026년 예시 코멘트:</strong> 최신 분기 데이터를 추가하고 실업률과 고용률의 차이가 나타난 원인을 3줄로 요약합니다." }
+      };
+      const dot = document.getElementById("yrDot");
+      const noteEl = document.getElementById("yrNote");
+      const btns = document.querySelectorAll("[data-yr]");
+      btns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const yr = btn.dataset.yr;
+          const info = notes[yr];
+          btns.forEach((b) => b.classList.toggle("active", b === btn));
+          if (dot && info) {
+            dot.setAttribute("cx", info.x);
+            dot.setAttribute("cy", info.y);
+          }
+          if (noteEl && info) noteEl.innerHTML = info.text;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

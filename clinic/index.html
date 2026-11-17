@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="apple">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2학기 지필평가 대비 &amp; 클리닉 안내 | 운양고 경제 클래스</title>
+  <meta name="description" content="터치하면 뒤집히는 3D 개념 카드와 방과 후 클리닉 시간표를 확인하는 시험 대비 페이지입니다." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="../assets/shared.css" />
+</head>
+<body>
+  <div class="page-curtain" id="pageCurtain" aria-hidden="true"></div>
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand" data-transition>
+        <span aria-hidden="true">📚</span>
+        <span>Tellzzang Class</span>
+        <span class="brand-pill">지필 클리닉</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="주 메뉴">
+        <a href="../index.html" class="nav-item" data-transition>홈</a>
+        <a href="../ws-03/index.html" class="nav-item" data-transition>03호 학습지</a>
+        <a href="../report/index.html" class="nav-item" data-transition>수행평가</a>
+        <a href="../clinic/index.html" class="nav-item active" data-transition>지필 클리닉</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeCycleBtn" type="button">🍏 애플 클린</button>
+        <a class="cta-sm" href="https://app.notion.com/p/41b973637abb8191a707e0217b5a0cef" target="_blank" rel="noopener noreferrer">노션 페이지 ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="apple-hero-banner apple-hero-dark reveal">
+      <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+      <div class="container hero-content">
+        <div class="breadcrumb" style="color: #a1a1a6;">
+          <a href="../index.html" data-transition>홈</a> <span>›</span>
+          <span>시험 대비</span> <span>›</span>
+          <span style="color: #fff;">지필평가 클리닉</span>
+        </div>
+        <h1 class="hero-title">
+          고난도 함정 4선.<br />
+          <span class="text-gradient">15분 만에 완벽 정리.</span>
+        </h1>
+        <p class="hero-desc">
+          2학기 지필평가 직전 헷갈리는 핵심 개념을 아래 <strong>3D 플립 카드</strong>를 터치해 즉시 점검하고, 방과 후 클리닉 시간을 선택해 보세요.
+        </p>
+        <div class="hero-buttons">
+          <a href="#flashcards" class="btn-apple-primary">3D 개념 카드 뒤집기 ↓</a>
+          <a href="../report/index.html" class="btn-apple-secondary" data-transition>← 보고서 가이드 보기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Flip Concept Flashcards -->
+    <section id="flashcards" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">3D INTERACTIVE FLASHCARDS</span>
+          <h2>🃏 빈출 킬러 개념 4선 (터치해 뒤집기)</h2>
+          <p class="section-sub">모바일에서도 카드 아무 곳이나 터치하면 3D 회전과 함께 핵심 함정이 펼쳐집니다.</p>
+        </div>
+
+        <div class="flip-grid">
+          <div class="flip-card" tabindex="0" role="button" aria-label="명목 GDP vs 실질 GDP 카드 뒤집기">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <span class="card-tag">CONCEPT 01 · 클릭해 정답 확인</span>
+                <h3 style="margin: 0.4rem 0; font-size: 1.35rem;">명목 GDP vs 실질 GDP</h3>
+                <p style="margin: 0; color: var(--text-muted);">기준연도와 비교연도에서 항상 같아지는 것은?</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="card-tag">KEY POINT</span>
+                <p style="margin: 0; font-size: 0.96rem;">
+                  <strong>기준연도</strong>에서는 당해연도 가격과 기준연도 가격이 같으므로 <strong>명목 GDP = 실질 GDP</strong>이며, GDP 디플레이터는 항상 <strong>100</strong>이 됩니다!
+                </p>
+                <span class="mono" style="font-size: 0.78rem; color: var(--accent);">다시 터치하면 앞면으로</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0" role="button" aria-label="고용지표 표 해석 카드 뒤집기">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <span class="card-tag">CONCEPT 02 · 클릭해 정답 확인</span>
+                <h3 style="margin: 0.4rem 0; font-size: 1.35rem;">고용지표 표 해석 함정</h3>
+                <p style="margin: 0; color: var(--text-muted);">실업률이 같은데 실업자 수도 같을까?</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="card-tag">KEY POINT</span>
+                <p style="margin: 0; font-size: 0.96rem;">
+                  아니요! 두 해의 <strong>15세 이상 인구</strong>나 <strong>경제활동참가율</strong>이 다르면, 실업률(%)이 같더라도 실제 실업자 수(명)는 완전히 달라질 수 있습니다.
+                </p>
+                <span class="mono" style="font-size: 0.78rem; color: var(--accent);">다시 터치하면 앞면으로</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0" role="button" aria-label="기회비용과 매몰비용 카드 뒤집기">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <span class="card-tag">CONCEPT 03 · 클릭해 정답 확인</span>
+                <h3 style="margin: 0.4rem 0; font-size: 1.35rem;">기회비용과 매몰비용</h3>
+                <p style="margin: 0; color: var(--text-muted);">이미 지불해 환불 안 되는 돈은 포함할까?</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="card-tag">KEY POINT</span>
+                <p style="margin: 0; font-size: 0.96rem;">
+                  회수 불가능한 <strong>매몰비용</strong>은 합리적 선택 시 절대 고려하지 않습니다! 기회비용은 <strong>명시적 비용 + 암묵적 비용</strong>만 합산하세요.
+                </p>
+                <span class="mono" style="font-size: 0.78rem; color: var(--accent);">다시 터치하면 앞면으로</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flip-card" tabindex="0" role="button" aria-label="환율 변동 파급 효과 카드 뒤집기">
+            <div class="flip-inner">
+              <div class="flip-face">
+                <span class="card-tag">CONCEPT 04 · 클릭해 정답 확인</span>
+                <h3 style="margin: 0.4rem 0; font-size: 1.35rem;">원/달러 환율 상승</h3>
+                <p style="margin: 0; color: var(--text-muted);">원화 가치는 어떻게 변할까?</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="card-tag">KEY POINT</span>
+                <p style="margin: 0; font-size: 0.96rem;">
+                  원/달러 환율 상승 = <strong>달러 가치 상승, 원화 가치 하락(평가절하)</strong>! 수출품 가격 경쟁력은 높아지지만 수입 원자재 물가와 외채 상환 부담은 커집니다.
+                </p>
+                <span class="mono" style="font-size: 0.78rem; color: var(--accent);">다시 터치하면 앞면으로</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clinic Time Slot Interactive Picker -->
+    <section class="section section-alt reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">1:1 CLINIC SCHEDULE</span>
+          <h2>🗓️ 방과 후 클리닉 희망 시간 미리 보기</h2>
+          <p class="section-sub">화·목 방과 후 (16:20 ~ 17:20) · 2층 사회과 연구실 · 15분 단위 운영</p>
+        </div>
+
+        <div class="glass-panel" style="margin-bottom: 2.5rem;">
+          <div class="filter-scroll" style="margin-bottom: 1rem;">
+            <button class="pill-btn active" data-slot="화요일 16:20 ~ 16:35" type="button">화 16:20</button>
+            <button class="pill-btn" data-slot="화요일 16:40 ~ 16:55" type="button">화 16:40</button>
+            <button class="pill-btn" data-slot="목요일 16:20 ~ 16:35" type="button">목 16:20</button>
+            <button class="pill-btn" data-slot="목요일 16:40 ~ 16:55" type="button">목 16:40</button>
+          </div>
+          <div id="slotResult" style="padding: 1rem 1.2rem; border-radius: 14px; background: var(--accent-soft); font-size: 0.94rem;">
+            선택된 시간: <strong>화요일 16:20 ~ 16:35</strong> · 오답 노트와 학습지를 지참해 2층 사회과 연구실로 오세요!
+          </div>
+        </div>
+
+        <div class="pager-grid">
+          <a href="../report/index.html" class="pager-card" data-transition>
+            <span class="pager-dir">← 이전 노션 하위 페이지</span>
+            <strong>거시경제 지표 분석 미니 보고서 가이드</strong>
+          </a>
+          <a href="../index.html" class="pager-card" style="text-align: right;" data-transition>
+            <span class="pager-dir">메인 허브로 돌아가기 →</span>
+            <strong>운양고 경제 클래스 홈</strong>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© 2026 운양고 경제 클래스 · Sub-page 03 (`clinic`)</p>
+      <p class="mono">Notion ID: 41b97363-7abb-8191-a707-e0217b5a0cef</p>
+    </div>
+  </footer>
+
+  <nav class="mobile-dock" aria-label="모바일 하단 메뉴">
+    <a href="../index.html" class="dock-tab" data-transition><span>🏠</span><span>홈</span></a>
+    <a href="../ws-03/index.html" class="dock-tab" data-transition><span>📄</span><span>03호</span></a>
+    <a href="../report/index.html" class="dock-tab" data-transition><span>📊</span><span>보고서</span></a>
+    <a href="../clinic/index.html" class="dock-tab active" data-transition><span>🎯</span><span>클리닉</span></a>
+  </nav>
+
+  <script src="../assets/motion.js"></script>
+  <script>
+    (() => {
+      const slotBtns = document.querySelectorAll("[data-slot]");
+      const slotRes = document.getElementById("slotResult");
+      slotBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          slotBtns.forEach((b) => b.classList.toggle("active", b === btn));
+          if (slotRes) {
+            slotRes.innerHTML = `선택된 시간: <strong>${btn.dataset.slot}</strong> · 오답 노트와 학습지를 지참해 2층 사회과 연구실로 오세요!`;
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

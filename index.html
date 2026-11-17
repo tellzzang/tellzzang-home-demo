@@ -1,478 +1,287 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="dramatic">
+<html lang="ko" data-theme="apple">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>운양고 경제 클래스 | 학습지 &amp; 수업 공지 (class.tellzzang.com)</title>
-  <meta name="description" content="운양고등학교 경제 수업 공지사항, 단원별 학습지 자료실, 수행평가 안내를 한눈에 확인하는 학생 전용 클래스 포털입니다." />
+  <title>운양고 경제 클래스 | Tellzzang Class (class.tellzzang.com)</title>
+  <meta name="description" content="Apple 스타일의 깔끔한 UI와 역동적 모션 그래픽으로 구현한 운양고 경제 클래스 공지·학습지 포털입니다." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./assets/shared.css" />
 </head>
 <body>
+  <div class="page-curtain" id="pageCurtain" aria-hidden="true"></div>
   <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
-  <div class="ambient-layer" aria-hidden="true">
-    <div class="aurora aurora-1"></div>
-    <div class="aurora aurora-2"></div>
-    <div class="aurora aurora-3"></div>
-    <div class="grid-overlay"></div>
-    <div class="cursor-spotlight" id="cursorSpotlight"></div>
-  </div>
-
-  <!-- Sticky Navigation -->
-  <header class="site-header" id="siteHeader">
+  <!-- Apple-style 46px Frosted Top Nav -->
+  <header class="site-header">
     <div class="container header-inner">
-      <a href="#top" class="brand">
-        <span class="brand-icon" aria-hidden="true">📚</span>
-        <span class="brand-text">탤짱 경제 클래스</span>
-        <span class="brand-badge">class.tellzzang.com</span>
+      <a href="./index.html" class="brand" data-transition>
+        <span aria-hidden="true">📚</span>
+        <span>Tellzzang Class</span>
+        <span class="brand-pill">class.tellzzang.com</span>
       </a>
 
-      <nav class="main-nav" aria-label="주 메뉴">
-        <a href="#guide">수업 안내</a>
-        <a href="#worksheets">학습지 자료실</a>
-        <a href="#tasks">수행평가·활동</a>
-        <a href="#checklist">체크리스트</a>
-        <a href="#connect">질문·연결</a>
+      <nav class="desktop-nav" aria-label="주 메뉴">
+        <a href="./index.html" class="nav-item active" data-transition>홈</a>
+        <a href="./ws-03/index.html" class="nav-item" data-transition>03호 학습지</a>
+        <a href="./report/index.html" class="nav-item" data-transition>수행평가</a>
+        <a href="./clinic/index.html" class="nav-item" data-transition>지필 클리닉</a>
+        <a href="#worksheets" class="nav-item">전체 자료실</a>
       </nav>
 
       <div class="header-actions">
-        <button class="btn-source" id="openSourceBtn" type="button" title="원본 노션 마크다운과 변환 구조 비교">
-          <span class="mono">&lt;/&gt;</span> 노션 원본 보기
+        <button class="icon-btn" id="themeCycleBtn" type="button" title="화면 스타일 전환">🍏 애플 클린</button>
+        <button class="icon-btn" id="openSourceBtn" data-source-path="./notion-source.md" type="button">
+          <span class="mono">&lt;/&gt;</span> 노션 원본
         </button>
-        <a class="btn-primary-sm" href="https://gdp.tellzzang.com" target="_blank" rel="noopener noreferrer">
-          GDP 실습 랩 ↗
-        </a>
+        <a class="cta-sm" href="https://gdp.tellzzang.com" target="_blank" rel="noopener noreferrer">GDP 랩 ↗</a>
       </div>
     </div>
   </header>
 
-  <!-- Floating Theme Switcher Dock -->
-  <div class="theme-dock" role="region" aria-label="홈페이지 스타일 전환기">
-    <span class="dock-label">스타일 변신</span>
-    <div class="dock-buttons">
-      <button class="dock-btn active" data-theme-choice="dramatic" type="button">
-        <span>🌌</span> 드라마틱 스튜디오
-      </button>
-      <button class="dock-btn" data-theme-choice="minimal" type="button">
-        <span>📄</span> Super.so 미니멀
-      </button>
-      <button class="dock-btn" data-theme-choice="editorial" type="button">
-        <span>📜</span> 웜 매거진
-      </button>
-    </div>
+  <!-- Apple.com/kr Signature Top Announcement Ribbon -->
+  <div class="apple-ribbon">
+    📢 <strong>이번 주 공지:</strong> 다음 시간 <strong>[03호] 물가와 실업 학습지</strong> 지참 · 수행평가 보고서 마감 금요일 17:00
+    <a href="./ws-03/index.html" data-transition>03호 학습지 바로 가기 &gt;</a>
   </div>
 
-  <main id="top" class="page-wrapper">
-    <div class="notion-cover" aria-hidden="true">
-      <div class="notion-cover-art"></div>
+  <main>
+    <!-- APPLE.COM/KR STACKED SHOWCASE BANNERS -->
+    <div class="apple-showcase-stack">
+      <!-- 1. Full-Bleed Pitch Black Keynote Hero with 60fps Motion Canvas -->
+      <section class="apple-hero-banner apple-hero-dark reveal">
+        <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="container hero-content">
+          <div class="eyebrow">
+            <span class="live-dot"></span>
+            <span>2026학년도 2학기 · 운양고 경제 클래스 (Notion Multi-Page)</span>
+          </div>
+          <h1 class="hero-title">
+            운양고 경제.<br />
+            <span class="text-gradient">데이터로 읽는 세상.</span>
+          </h1>
+          <p class="hero-desc">
+            오늘 수업 공지, 단원별 학습지, 수행평가 가이드까지. 노션 하위 페이지들이 각각 독립된 애플 스타일 웹페이지로 열립니다.
+          </p>
+          <div class="hero-buttons">
+            <a href="./ws-03/index.html" class="btn-apple-primary" data-transition>03호 학습지 열기 &gt;</a>
+            <a href="#worksheets" class="btn-apple-secondary">전체 자료실 내려보기 ↓</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Full-Bleed Light Hero Banner (Sub-page 1 Preview) -->
+      <section class="apple-hero-banner apple-hero-light reveal">
+        <div class="container hero-content">
+          <span class="section-kicker">THIS WEEK · WORKSHEET 03</span>
+          <h2 class="hero-title" style="font-size: clamp(1.9rem, 4.4vw, 3.3rem);">
+            실업률 통계의 착시.<br />직접 움직여 이해하다.
+          </h2>
+          <p class="hero-desc">
+            구직 단념자가 늘어나면 왜 실업률이 내려갈까? 03호 전용 페이지의 실시간 시뮬레이터에서 슬라이더를 밀어 직접 확인하세요.
+          </p>
+          <div class="hero-buttons">
+            <a href="./ws-03/index.html" class="btn-apple-primary" data-transition>03호 페이지 + 시뮬레이터 열기 &gt;</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Iconic 2-Up Promo Tiles (Sub-pages 2 & 3) -->
+      <div class="apple-tile-pair">
+        <a href="./report/index.html" class="apple-promo-tile tile-dark reveal" data-transition>
+          <div class="tile-copy">
+            <span class="card-tag" style="color: #2997ff;">수행평가 가이드 · 금요일 17:00 마감</span>
+            <h3>거시경제 지표 보고서</h3>
+            <p>최근 3개년 GDP·물가·실업률 모션 차트와 A4 1장 작성 비법, 채점 배점을 확인하세요.</p>
+            <div class="tile-links">
+              <span class="card-arrow" style="color: #2997ff;">가이드 페이지 열기 &gt;</span>
+            </div>
+          </div>
+          <div class="tile-visual" aria-hidden="true">
+            <svg viewBox="0 0 360 130" fill="none">
+              <path class="draw-line" d="M16 104 C 70 96, 110 38, 175 56 C 235 72, 285 20, 344 28" stroke="#2997ff" stroke-width="4" stroke-linecap="round"/>
+              <path class="draw-line" d="M16 86 C 80 78, 130 98, 195 66 C 250 40, 295 60, 344 46" stroke="#32d74b" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+              <circle cx="175" cy="56" r="6" fill="#2997ff"/>
+              <circle cx="344" cy="28" r="6" fill="#2997ff"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="./clinic/index.html" class="apple-promo-tile tile-light reveal" data-transition>
+          <div class="tile-copy">
+            <span class="card-tag">시험 대비 집중 클리닉 · 화/목 방과 후</span>
+            <h3>2학기 지필평가 클리닉</h3>
+            <p>터치하면 뒤집히는 3D 개념 카드 4선으로 시험 킬러 함정을 15분 만에 점검하세요.</p>
+            <div class="tile-links">
+              <span class="card-arrow">클리닉 페이지 열기 &gt;</span>
+            </div>
+          </div>
+          <div class="tile-visual" aria-hidden="true">
+            <svg viewBox="0 0 360 130" fill="none">
+              <rect x="28" y="22" width="90" height="86" rx="16" fill="#ffffff" stroke="rgba(0,0,0,0.12)" stroke-width="2"/>
+              <rect x="135" y="12" width="90" height="104" rx="16" fill="#0071e3"/>
+              <rect x="242" y="22" width="90" height="86" rx="16" fill="#ffffff" stroke="rgba(0,0,0,0.12)" stroke-width="2"/>
+              <text x="180" y="69" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">3D 카드</text>
+            </svg>
+          </div>
+        </a>
+      </div>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero section-reveal">
-      <div class="container hero-container">
-        <div class="hero-eyebrow">
-          <span class="pulse-dot"></span>
-          <span>2026학년도 2학기 · 운양고 경제 클래스 공지 &amp; 학습지 허브</span>
+    <!-- 4. Key Metrics Strip (Animated Counters) -->
+    <section class="keynote-band reveal">
+      <div class="container">
+        <div class="section-head" style="text-align: center; margin-bottom: 2.2rem;">
+          <span class="section-kicker" style="color: #2997ff;">CONNECTED NOTION PAGES</span>
+          <h2 style="color: #ffffff;">하나의 노션 허브에서 뻗어 나가는 수업 웹</h2>
+          <p class="section-sub">각 노션 하위 페이지가 독립된 URL과 고유한 모션 그래픽을 갖춘 웹사이트로 연결됩니다.</p>
         </div>
-
-        <h1 class="hero-title">
-          오늘 수업 <span class="gradient-text">공지와 학습지</span>를<br />
-          한눈에 확인하세요.
-        </h1>
-
-        <p class="hero-subtitle">
-          수업 전에 확인해야 할 핵심 공지, 단원별 학습지 다운로드, 수행평가 마감 일정까지 학생 여러분을 위해 깔끔하게 정리했습니다. (노션 샘플 페이지 기반 자동 구성)
-        </p>
-
-        <!-- Urgent Notice Callout -->
-        <div class="callout-card notice-callout">
-          <div class="callout-icon">📢</div>
-          <div class="callout-body">
-            <div class="notice-head-row">
-              <strong>이번 주 긴급 공지 (11월 3주차)</strong>
-              <span class="notice-tag">필독 · 이번 주 수업</span>
-            </div>
-            다음 시간에는 <strong>[03호] 물가와 실업 학습지</strong>를 출력하거나 태블릿에 저장해 지참하세요. 수행평가 미니 보고서 초안 제출 마감은 <strong>이번 주 금요일 17:00</strong>입니다.
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; text-align: center;">
+          <div style="padding: 1.5rem; border-radius: 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 2.3rem; font-weight: 800;" data-count-to="4" data-suffix="개">0개</div>
+            <div style="color: #a1a1a6; font-size: 0.88rem;">실제 연결된 노션 웹페이지</div>
           </div>
-        </div>
-
-        <div class="hero-cta-row">
-          <a href="#worksheets" class="btn-hero-primary">📄 이번 주 학습지 바로 보기 ↓</a>
-          <button type="button" class="btn-hero-secondary" id="cycleThemeBtn">✨ 다른 테마로 보기 (3종)</button>
-        </div>
-
-        <!-- Quick Class Metrics -->
-        <div class="hero-metrics">
-          <div class="metric-item">
-            <span class="metric-value">03호 최신</span>
-            <span class="metric-label">이번 주 수업 학습지</span>
+          <div style="padding: 1.5rem; border-radius: 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 2.3rem; font-weight: 800; color: #2997ff;" data-count-to="60" data-suffix="fps">0fps</div>
+            <div style="color: #a1a1a6; font-size: 0.88rem;">Canvas &amp; SVG 모션 그래픽</div>
           </div>
-          <div class="metric-divider"></div>
-          <div class="metric-item">
-            <span class="metric-value">매주 월 08:30</span>
-            <span class="metric-label">신규 학습지 업데이트</span>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric-item">
-            <span class="metric-value">금요일 17:00</span>
-            <span class="metric-label">수행평가 초안 마감</span>
+          <div style="padding: 1.5rem; border-radius: 20px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);">
+            <div style="font-size: 2.3rem; font-weight: 800; color: #32d74b;" data-count-to="100" data-suffix="%">0%</div>
+            <div style="color: #a1a1a6; font-size: 0.88rem;">모바일 터치 &amp; 반응형 최적화</div>
           </div>
         </div>
       </div>
     </section>
 
-    <div class="container layout-shell">
-      <!-- Sticky TOC Sidebar -->
-      <aside class="toc-sidebar" aria-label="페이지 목차">
-        <div class="toc-card">
-          <p class="toc-title">CLASS MENU</p>
-          <ul class="toc-list">
-            <li><a href="#guide" class="toc-link">🧭 수업 기본 안내</a></li>
-            <li><a href="#worksheets" class="toc-link">📄 단원별 학습지</a></li>
-            <li><a href="#tasks" class="toc-link">📝 수행평가 · 활동</a></li>
-            <li><a href="#checklist" class="toc-link">✅ 이번 주 체크리스트</a></li>
-            <li><a href="#connect" class="toc-link">🙋 질문 &amp; 연결</a></li>
-          </ul>
-          <div class="toc-meta">
-            <span class="toc-badge">Student Sample Mode</span>
-            <p>선생님이 노션 페이지에 학습지·공지를 올리면 학생 화면에 깔끔하게 반영됩니다.</p>
+    <!-- 5. Filterable Worksheet Archive -->
+    <section id="worksheets" class="section reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">WORKSHEET ARCHIVE</span>
+          <h2>📄 단원별 학습지 자료실</h2>
+          <p class="section-sub">단원을 필터링하거나 검색해 원하는 학습지 페이지로 바로 이동하세요.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="filter-scroll" role="group" aria-label="단원 필터">
+            <button class="pill-btn active" data-ws-filter="all" type="button">전체</button>
+            <button class="pill-btn" data-ws-filter="I" type="button">I. 국민경제</button>
+            <button class="pill-btn" data-ws-filter="II" type="button">II. 물가와 실업</button>
+            <button class="pill-btn" data-ws-filter="III" type="button">III. 금융·무역</button>
+            <button class="pill-btn" data-ws-filter="exam" type="button">시험 대비</button>
+          </div>
+          <input type="search" id="wsSearch" class="search-input" placeholder="학습지 번호·키워드 검색..." aria-label="학습지 검색" />
+        </div>
+
+        <div class="ws-list">
+          <a href="./ws-03/index.html" class="ws-row" data-category="II" data-transition>
+            <div>
+              <div class="ws-meta">II. 물가와 실업 · 2026-11-16 · 서브페이지 연결됨</div>
+              <h3>[03호] 실업률 통계의 착시와 고용지표</h3>
+              <p>경제활동인구·실업률·고용률 3종 비교 &amp; 실시간 착시 시뮬레이터 페이지 열기</p>
+            </div>
+            <span class="status-chip chip-hot">이번 주 수업 ★</span>
+          </a>
+
+          <a href="./report/index.html" class="ws-row" data-category="I" data-transition>
+            <div>
+              <div class="ws-meta">I~II 통합 수행평가 · 금요일 17:00 마감 · 서브페이지 연결됨</div>
+              <h3>[수행평가] 거시경제 지표 분석 미니 보고서 가이드</h3>
+              <p>최근 3개년 GDP·물가·실업률 모션 차트와 채점 기준표 페이지 열기</p>
+            </div>
+            <span class="status-chip chip-soon">마감 임박</span>
+          </a>
+
+          <a href="./clinic/index.html" class="ws-row" data-category="exam" data-transition>
+            <div>
+              <div class="ws-meta">시험 대비 · 화/목 방과 후 · 서브페이지 연결됨</div>
+              <h3>[특강] 2학기 지필평가 고난도 대비 &amp; 클리닉</h3>
+              <p>3D 플립 킬러 개념 카드 4선 및 방과 후 클리닉 시간표 확인하기</p>
+            </div>
+            <span class="status-chip chip-done">신청 가능</span>
+          </a>
+
+          <a href="https://gdp.tellzzang.com" target="_blank" rel="noopener noreferrer" class="ws-row" data-category="I">
+            <div>
+              <div class="ws-meta">I. 국민경제와 경제성장 · 2026-11-02</div>
+              <h3>[01호] 명목 GDP vs 실질 GDP 완전 정복 (실습 랩)</h3>
+              <p>GDP 디플레이터 계산 및 <code>gdp.tellzzang.com</code> 시뮬레이터 연동 학습</p>
+            </div>
+            <span class="status-chip chip-done">배포 완료 ↗</span>
+          </a>
+
+          <div class="ws-row" data-category="III">
+            <div>
+              <div class="ws-meta">III. 금융과 국제무역 · 2026-11-23 예정</div>
+              <h3>[04호] 기준금리 변동과 환율 시나리오</h3>
+              <p>한국은행 기준금리 변화가 환율·물가·수출에 미치는 연쇄 파급 효과 (다음 주 오픈)</p>
+            </div>
+            <span class="status-chip chip-soon">업로드 예정</span>
           </div>
         </div>
-      </aside>
-
-      <div class="main-content">
-        <!-- GUIDE SECTION -->
-        <section id="guide" class="content-section section-reveal">
-          <div class="section-header">
-            <span class="section-tag">01 / CLASS GUIDE</span>
-            <h2>🧭 수업 기본 안내</h2>
-            <p class="section-desc">수업 참여 방식과 과제 제출 원칙을 꼭 확인해 주세요.</p>
-          </div>
-
-          <div class="bento-grid">
-            <article class="bento-card bento-profile">
-              <div class="card-badge-row">
-                <span class="pill pill-accent">운양고등학교 경제</span>
-                <span class="mono muted">안태일(탤짱) 선생님</span>
-              </div>
-              <h3>교과서 개념을 살아있는 데이터로</h3>
-              <p>
-                교과서 개념을 현실의 물가·GDP·금리 데이터와 연결해 스스로 읽고 해석하는 <strong>운양고 경제 클래스</strong> 허브입니다.
-              </p>
-              <p>
-                수업 전에 공지사항과 학습지를 미리 확인하고, 결석했거나 잃어버린 수업 자료는 아래 자료실에서 언제든 다시 확인할 수 있습니다.
-              </p>
-              <div class="profile-chips">
-                <span>#거시경제</span>
-                <span>#학습지아카이브</span>
-                <span>#수행평가안내</span>
-                <span>#지필대비</span>
-              </div>
-            </article>
-
-            <article class="bento-card bento-focus">
-              <h3>수업 · 과제 제출 4대 원칙</h3>
-              <ul class="focus-list">
-                <li>
-                  <span class="focus-icon">🎒</span>
-                  <div>
-                    <strong>준비물 지참</strong>
-                    <p>단원별 학습지(출력 또는 태블릿), 필기도구</p>
-                  </div>
-                </li>
-                <li>
-                  <span class="focus-icon">⏰</span>
-                  <div>
-                    <strong>마감 시간 엄수</strong>
-                    <p>수행평가 보고서 기한 준수 및 출처(통계청·한국은행) 명시</p>
-                  </div>
-                </li>
-                <li>
-                  <span class="focus-icon">💬</span>
-                  <div>
-                    <strong>질문 및 피드백</strong>
-                    <p>수업 직후 교무실 방문 또는 온라인 질문 창구 활용</p>
-                  </div>
-                </li>
-                <li>
-                  <span class="focus-icon">🔄</span>
-                  <div>
-                    <strong>정기 업데이트</strong>
-                    <p>매주 월요일 오전 8시 30분 다음 주 학습지 업로드</p>
-                  </div>
-                </li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <!-- WORKSHEETS ARCHIVE (Interactive Student Material Board) -->
-        <section id="worksheets" class="content-section section-reveal">
-          <div class="section-header">
-            <span class="section-tag">02 / WORKSHEETS</span>
-            <h2>📄 단원별 학습지 &amp; 보충 자료</h2>
-            <p class="section-desc">단원을 선택하거나 검색하고, 카드를 클릭해 학습지 핵심 요약과 준비 안내를 확인하세요.</p>
-          </div>
-
-          <div class="notes-toolbar">
-            <div class="filter-pills" role="group" aria-label="단원 필터">
-              <button class="filter-pill active" data-filter="all" type="button">전체</button>
-              <button class="filter-pill" data-filter="I. 국민경제와 경제성장" type="button">I. 국민경제</button>
-              <button class="filter-pill" data-filter="II. 물가와 실업" type="button">II. 물가와 실업</button>
-              <button class="filter-pill" data-filter="III. 금융과 국제무역" type="button">III. 금융·무역</button>
-              <button class="filter-pill" data-filter="시험 대비" type="button">시험 대비</button>
-            </div>
-            <input type="search" id="notesSearch" class="notes-search" placeholder="학습지 호수·단원·키워드 검색..." aria-label="학습지 검색" />
-          </div>
-
-          <div class="notes-list" id="notesList">
-            <article class="note-row worksheet-item" data-category="II. 물가와 실업" data-worksheet="ws03" tabindex="0" role="button">
-              <div class="note-meta">
-                <span class="note-cat">II. 물가와 실업 · 2026-11-16</span>
-                <span class="note-status current">이번 주 수업 ★</span>
-              </div>
-              <h3>[03호] 실업률 통계의 착시와 고용지표</h3>
-              <p>경제활동인구·실업률·고용률 3종 비교 심화 문항 및 실망실업자 함정 분석 (클릭해 미리보기)</p>
-            </article>
-
-            <article class="note-row worksheet-item" data-category="II. 물가와 실업" data-worksheet="ws02" tabindex="0" role="button">
-              <div class="note-meta">
-                <span class="note-cat">II. 물가와 실업 · 2026-11-09</span>
-                <span class="note-status done">배포 완료</span>
-              </div>
-              <h3>[02호] 인플레이션과 물가지수 계산</h3>
-              <p>소비자물가지수(CPI) 함정과 체감물가 차이 분석, 기대 인플레이션의 효과 연습</p>
-            </article>
-
-            <article class="note-row worksheet-item" data-category="I. 국민경제와 경제성장" data-worksheet="ws01" tabindex="0" role="button">
-              <div class="note-meta">
-                <span class="note-cat">I. 국민경제와 경제성장 · 2026-11-02</span>
-                <span class="note-status done">배포 완료</span>
-              </div>
-              <h3>[01호] 명목 GDP vs 실질 GDP 완전 정복</h3>
-              <p>GDP 디플레이터 계산 및 1인당 GDP 해석 연습, 국내총생산 제외 항목 구분하기</p>
-            </article>
-
-            <article class="note-row worksheet-item" data-category="III. 금융과 국제무역" data-worksheet="ws04" tabindex="0" role="button">
-              <div class="note-meta">
-                <span class="note-cat">III. 금융과 국제무역 · 2026-11-23 예정</span>
-                <span class="note-status writing">업로드 예정</span>
-              </div>
-              <h3>[04호] 기준금리 변동과 환율 시나리오</h3>
-              <p>한국은행 기준금리 변화가 환율·물가·수출입에 미치는 연쇄 파급 효과 정리</p>
-            </article>
-
-            <article class="note-row worksheet-item" data-category="시험 대비" data-worksheet="ws05" tabindex="0" role="button">
-              <div class="note-meta">
-                <span class="note-cat">시험 대비 · 2026-11-30 예정</span>
-                <span class="note-status idea">준비 중</span>
-              </div>
-              <h3>[특강] 2학기 지필평가 고난도 기출 모음</h3>
-              <p>한국교육과정평가원형 자료 해석 10선 및 나만의 오답 노트 양식 제공</p>
-            </article>
-          </div>
-        </section>
-
-        <!-- PERFORMANCE TASKS & CLASS ACTIVITIES -->
-        <section id="tasks" class="content-section section-reveal">
-          <div class="section-header">
-            <span class="section-tag">03 / TASKS &amp; EXAMS</span>
-            <h2>📝 수행평가 · 중요 활동 안내</h2>
-            <p class="section-desc">카드를 클릭하면 제출 기한, 평가 기준, 준비 방법을 자세히 확인할 수 있습니다.</p>
-          </div>
-
-          <div class="projects-grid">
-            <article class="project-card" data-project="report" tabindex="0" role="button">
-              <div class="project-top">
-                <span class="project-num">활동 01</span>
-                <span class="project-status status-live">금요일 마감</span>
-              </div>
-              <div class="project-visual visual-gdp" aria-hidden="true">
-                <svg viewBox="0 0 240 100" fill="none">
-                  <path d="M10 80 C 50 75, 70 30, 110 45 C 150 60, 180 15, 230 22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-                  <circle cx="110" cy="45" r="5" fill="currentColor"/>
-                  <circle cx="230" cy="22" r="5" fill="currentColor"/>
-                </svg>
-              </div>
-              <h3>거시경제 지표 분석 미니 보고서</h3>
-              <p>최근 3년간 한국의 GDP 성장률·물가상승률·실업률 추이를 그래프 1개로 정리하고 원인을 A4 1장 내외로 분석합니다.</p>
-              <span class="project-link">평가 기준 보기 →</span>
-            </article>
-
-            <article class="project-card" data-project="gdplab" tabindex="0" role="button">
-              <div class="project-top">
-                <span class="project-num">활동 02</span>
-                <span class="project-status status-archive">온라인 실습</span>
-              </div>
-              <div class="project-visual visual-club" aria-hidden="true">
-                <svg viewBox="0 0 240 100" fill="none">
-                  <rect x="20" y="20" width="56" height="60" rx="10" stroke="currentColor" stroke-width="2.5"/>
-                  <rect x="92" y="14" width="56" height="72" rx="10" stroke="currentColor" stroke-width="2.5"/>
-                  <rect x="164" y="26" width="56" height="54" rx="10" stroke="currentColor" stroke-width="2.5"/>
-                </svg>
-              </div>
-              <h3>GDP 인터랙티브 랩 온라인 실습</h3>
-              <p>수업 시간에 안내한 <code>gdp.tellzzang.com</code> 시뮬레이터에서 기준연도 변화에 따른 실질 GDP 변화를 테스트합니다.</p>
-              <span class="project-link">실습 안내 보기 →</span>
-            </article>
-
-            <article class="project-card" data-project="clinic" tabindex="0" role="button">
-              <div class="project-top">
-                <span class="project-num">활동 03</span>
-                <span class="project-status status-system">자율 클리닉</span>
-              </div>
-              <div class="project-visual visual-hub" aria-hidden="true">
-                <svg viewBox="0 0 240 100" fill="none">
-                  <circle cx="48" cy="50" r="18" stroke="currentColor" stroke-width="2.5"/>
-                  <circle cx="120" cy="50" r="22" stroke="currentColor" stroke-width="2.5"/>
-                  <circle cx="192" cy="50" r="18" stroke="currentColor" stroke-width="2.5"/>
-                  <path d="M66 50 H98 M142 50 H174" stroke="currentColor" stroke-width="2.5" stroke-dasharray="4 4"/>
-                </svg>
-              </div>
-              <h3>2학기 지필평가 핵심 개념 클리닉</h3>
-              <p>실업률 통계, 환율 변동, 기회비용 계산 등 헷갈리기 쉬운 핵심 개념을 15분 단위로 점검하는 클리닉입니다.</p>
-              <span class="project-link">신청 안내 보기 →</span>
-            </article>
-          </div>
-        </section>
-
-        <!-- STUDENT CHECKLIST -->
-        <section id="checklist" class="content-section section-reveal">
-          <div class="section-header">
-            <span class="section-tag">04 / MY CHECKLIST</span>
-            <h2>✅ 이번 주 학생 체크리스트</h2>
-            <p class="section-desc">스스로 준비 상태를 점검해 보세요! 브라우저에 체크 상태가 저장됩니다.</p>
-          </div>
-
-          <div class="roadmap-card">
-            <div class="roadmap-top">
-              <div>
-                <span class="roadmap-label">이번 주 수업 준비 달성률</span>
-                <strong class="roadmap-percent" id="roadmapPercent">50%</strong>
-              </div>
-              <span class="roadmap-count" id="roadmapCount">2 / 4 완료</span>
-            </div>
-            <div class="roadmap-track">
-              <div class="roadmap-fill" id="roadmapFill" style="width: 50%"></div>
-            </div>
-
-            <ul class="roadmap-checklist" id="roadmapChecklist">
-              <li>
-                <label class="check-item">
-                  <input type="checkbox" checked />
-                  <span class="check-box"></span>
-                  <span class="check-text">[02호] 물가지수 학습지 빈칸 채우기 및 오답 확인</span>
-                </label>
-              </li>
-              <li>
-                <label class="check-item">
-                  <input type="checkbox" checked />
-                  <span class="check-box"></span>
-                  <span class="check-text"><code>gdp.tellzzang.com</code> 시뮬레이터 접속 테스트 완료</span>
-                </label>
-              </li>
-              <li>
-                <label class="check-item">
-                  <input type="checkbox" />
-                  <span class="check-box"></span>
-                  <span class="check-text">[03호] 실업률 통계 학습지 출력 또는 태블릿 저장</span>
-                </label>
-              </li>
-              <li>
-                <label class="check-item">
-                  <input type="checkbox" />
-                  <span class="check-box"></span>
-                  <span class="check-text">수행평가 미니 보고서 통계 출처 2곳 이상 정리하기</span>
-                </label>
-              </li>
-            </ul>
-          </div>
-        </section>
-
-        <!-- CONNECT SECTION -->
-        <section id="connect" class="content-section section-reveal">
-          <div class="connect-banner">
-            <div class="connect-text">
-              <span class="section-tag">05 / STUDENT SUPPORT</span>
-              <h2>수업 질문 · 자료 요청 · 관련 사이트</h2>
-              <p>
-                학습지 내용이 이해되지 않거나 결석으로 보충 설명이 필요할 때는 언제든 편하게 질문하세요. 아래 링크에서 실습 웹앱과 블로그를 바로 열 수 있습니다.
-              </p>
-            </div>
-            <div class="connect-links">
-              <a href="https://gdp.tellzzang.com" target="_blank" rel="noopener noreferrer" class="connect-btn primary">
-                <span>📊 GDP 시뮬레이터 실습 (gdp.tellzzang.com)</span>
-                <span>↗</span>
-              </a>
-              <a href="https://tellzzang.com" target="_blank" rel="noopener noreferrer" class="connect-btn">
-                <span>🌐 선생님 공식 블로그 (tellzzang.com)</span>
-                <span>↗</span>
-              </a>
-              <a href="https://app.notion.com/p/41b973637abb810aa1b2c44e9bddc621" target="_blank" rel="noopener noreferrer" class="connect-btn">
-                <span>📝 노션 원본 샘플 페이지 열기</span>
-                <span>↗</span>
-              </a>
-            </div>
-          </div>
-        </section>
       </div>
-    </div>
+    </section>
+
+    <!-- 6. Interactive Student Checklist -->
+    <section class="section section-alt reveal">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-kicker">WEEKLY CHECKLIST</span>
+          <h2>✅ 이번 주 수업 준비 체크리스트</h2>
+          <p class="section-sub">항목을 터치해 준비 완료 상태를 기록하세요. 내 기기에 자동 저장됩니다.</p>
+        </div>
+
+        <div class="checklist-card">
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <strong id="mainPct" style="font-size: 2rem; font-weight: 800;">50%</strong>
+            <span id="mainCount" class="mono" style="color: var(--accent); font-weight: 700;">2 / 4 완료</span>
+          </div>
+          <div class="bar-track" style="margin: 0.7rem 0 0.5rem;">
+            <div class="bar-fill fill-blue" id="mainFill" style="width: 50%;"></div>
+          </div>
+
+          <ul class="check-list" data-checklist-key="tellzzang-apple-main-checks" data-pct-id="mainPct" data-count-id="mainCount" data-fill-id="mainFill">
+            <li><label class="check-label"><input type="checkbox" checked /><span class="check-ui"></span><span class="check-txt">[02호] 물가지수 학습지 빈칸 채우기 완료</span></label></li>
+            <li><label class="check-label"><input type="checkbox" checked /><span class="check-ui"></span><span class="check-txt"><code>gdp.tellzzang.com</code> 시뮬레이터 접속 확인</span></label></li>
+            <li><label class="check-label"><input type="checkbox" /><span class="check-ui"></span><span class="check-txt">[03호] 실업률 통계 학습지 출력 또는 태블릿 저장</span></label></li>
+            <li><label class="check-label"><input type="checkbox" /><span class="check-ui"></span><span class="check-txt">수행평가 미니 보고서 통계 출처 2곳 정리하기</span></label></li>
+          </ul>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© 2026 운양고 경제 클래스 (Tellzzang) · Notion ➔ GitHub Pages Student Portal Sample</p>
-      <p class="muted mono">Domain Target: class.tellzzang.com</p>
+    <div class="container footer-row">
+      <p>© 2026 운양고 경제 클래스 (Tellzzang) · Apple-Inspired Notion Multi-Page Demo</p>
+      <p class="mono">class.tellzzang.com · Notion Hub: 41b97363</p>
     </div>
   </footer>
 
-  <!-- Detail Modal (for both Tasks and Worksheets) -->
-  <div class="modal-backdrop" id="projectModal" hidden>
-    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="closeProjectModal" type="button" aria-label="닫기">✕</button>
-      <span class="modal-tag" id="modalTag">CLASS INFO</span>
-      <h3 id="modalTitle">제목</h3>
-      <p id="modalDesc" class="modal-desc"></p>
-      <div id="modalDetails" class="modal-details"></div>
-      <div class="modal-actions">
-        <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">관련 링크 열기 ↗</a>
-        <button type="button" class="btn-hero-secondary" id="closeProjectModalBtn">닫기</button>
-      </div>
-    </div>
-  </div>
+  <!-- Mobile Bottom Navigation Dock -->
+  <nav class="mobile-dock" aria-label="모바일 하단 메뉴">
+    <a href="./index.html" class="dock-tab active" data-transition><span>🏠</span><span>홈</span></a>
+    <a href="./ws-03/index.html" class="dock-tab" data-transition><span>📄</span><span>03호</span></a>
+    <a href="./report/index.html" class="dock-tab" data-transition><span>📊</span><span>보고서</span></a>
+    <a href="./clinic/index.html" class="dock-tab" data-transition><span>🎯</span><span>클리닉</span></a>
+  </nav>
 
-  <!-- Notion Source Inspector Modal -->
+  <!-- Notion Source Modal -->
   <div class="modal-backdrop" id="sourceModal" hidden>
-    <div class="modal-dialog modal-wide" role="dialog" aria-modal="true" aria-labelledby="sourceModalTitle">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="srcTitle">
       <button class="modal-close" id="closeSourceModal" type="button" aria-label="닫기">✕</button>
-      <span class="modal-tag">NOTION ➔ CLASS.TELLZZANG.COM</span>
-      <h3 id="sourceModalTitle">노션 원본 마크다운 &amp; 학생 포털 변환 구조</h3>
-      <p class="modal-desc">
-        노션 샘플 페이지(<code>운양고 경제 클래스 | 학습지 &amp; 수업 공지</code>)의 각 블록이 학생용 웹사이트 요소로 어떻게 변환되었는지 확인하세요.
+      <span class="section-kicker">NOTION SOURCE INSPECTOR</span>
+      <h3 id="srcTitle" style="margin: 0.25rem 0 0.7rem;">노션 원본 마크다운 &amp; 하위 페이지 연결</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0;">
+        메인 노션 페이지와 3개의 실제 하위 페이지(<code>/ws-03/</code>, <code>/report/</code>, <code>/clinic/</code>)가 각각 독립 웹페이지로 연결되어 있습니다.
       </p>
-      <div class="source-split">
-        <div class="source-pane">
-          <h4>📄 Notion 원본 마크다운</h4>
-          <pre id="notionSourceCode" class="source-code">불러오는 중...</pre>
-        </div>
-        <div class="source-pane">
-          <h4>✨ 학생용 UI 변환 매핑</h4>
-          <ul class="mapping-list">
-            <li><strong>&lt;callout icon="📢"&gt;</strong> ➔ 최상단 필독 긴급 공지 배너</li>
-            <li><strong>&lt;columns&gt; 2단 레이아웃</strong> ➔ 수업 소개 + 과제 제출 4대 원칙 카드</li>
-            <li><strong>| 학습지 마크다운 표 |</strong> ➔ 단원별 필터·검색·미리보기 모달 자료실</li>
-            <li><strong>### 01~03 활동 안내</strong> ➔ 평가 기준·신청 안내 모달 카드</li>
-            <li><strong>- [x] 학생 체크리스트</strong> ➔ 브라우저에 저장되는 수업 준비 달성률 게이지</li>
-          </ul>
-        </div>
-      </div>
+      <pre id="notionSourceCode" class="source-pre">불러오는 중...</pre>
     </div>
   </div>
 
-  <script src="./app.js"></script>
+  <script src="./assets/motion.js"></script>
 </body>
 </html>
