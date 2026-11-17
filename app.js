@@ -14,13 +14,13 @@
 
   function applyTheme(theme) {
     html.setAttribute("data-theme", theme);
-    localStorage.setItem("tellzzang-demo-theme", theme);
+    localStorage.setItem("tellzzang-class-theme", theme);
     themeButtons.forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.themeChoice === theme);
     });
   }
 
-  const savedTheme = localStorage.getItem("tellzzang-demo-theme");
+  const savedTheme = localStorage.getItem("tellzzang-class-theme");
   if (savedTheme && themes.includes(savedTheme)) {
     applyTheme(savedTheme);
   }
@@ -86,7 +86,7 @@
 
   sections.forEach((sec) => tocObserver.observe(sec));
 
-  // Notes Filter & Search
+  // Worksheets Filter & Search
   const filterPills = document.querySelectorAll(".filter-pill");
   const notesSearch = document.getElementById("notesSearch");
   const noteRows = document.querySelectorAll(".note-row");
@@ -115,16 +115,34 @@
     notesSearch.addEventListener("input", filterNotes);
   }
 
-  // Interactive Roadmap Progress
+  // Interactive Student Checklist with LocalStorage persistence
   const checklist = document.getElementById("roadmapChecklist");
   const roadmapPercent = document.getElementById("roadmapPercent");
   const roadmapCount = document.getElementById("roadmapCount");
   const roadmapFill = document.getElementById("roadmapFill");
+  const CHECK_KEY = "tellzzang-class-checks-v1";
+
+  function loadChecklistState() {
+    if (!checklist) return;
+    try {
+      const saved = JSON.parse(localStorage.getItem(CHECK_KEY) || "null");
+      if (Array.isArray(saved)) {
+        const boxes = checklist.querySelectorAll('input[type="checkbox"]');
+        boxes.forEach((box, idx) => {
+          if (typeof saved[idx] === "boolean") box.checked = saved[idx];
+        });
+      }
+    } catch {
+      // Ignore storage error
+    }
+  }
 
   function updateRoadmap() {
     if (!checklist) return;
     const boxes = checklist.querySelectorAll('input[type="checkbox"]');
-    const done = Array.from(boxes).filter((b) => b.checked).length;
+    const states = Array.from(boxes).map((b) => b.checked);
+    localStorage.setItem(CHECK_KEY, JSON.stringify(states));
+    const done = states.filter(Boolean).length;
     const total = boxes.length;
     const pct = total ? Math.round((done / total) * 100) : 0;
     if (roadmapPercent) roadmapPercent.textContent = `${pct}%`;
@@ -133,35 +151,76 @@
   }
 
   if (checklist) {
+    loadChecklistState();
     checklist.addEventListener("change", updateRoadmap);
     updateRoadmap();
   }
 
-  // Project Detail Modal
-  const projectData = {
-    gdp: {
-      tag: "PROJECT 01 · INTERACTIVE WEB",
-      title: "GDP & 거시경제 인터랙티브 랩",
-      desc: "학생들이 교과서 속 명목 GDP·실질 GDP·물가지수 개념을 직접 조작하며 이해하는 수업용 시뮬레이터입니다.",
+  // Detail Modal Data (Tasks & Worksheets)
+  const detailData = {
+    report: {
+      tag: "수행평가 01 · 금요일 17:00 마감",
+      title: "거시경제 지표 분석 미니 보고서",
+      desc: "최근 3년간 한국의 GDP 성장률, 소비자물가상승률, 실업률 추이를 직접 조사해 해석하는 탐구 과제입니다.",
       details:
-        "<ul><li><strong>연동 도메인:</strong> <code>gdp.tellzzang.com</code> (GitHub Pages 운영)</li><li><strong>활용 방식:</strong> 수업 중 태블릿/스마트폰으로 즉시 접속해 변수 변화에 따른 그래프 이동 실습</li><li><strong>노션 연결:</strong> 수업 활동지 및 해설 노션 페이지와 상호 연결 가능</li></ul>",
+        "<ul><li><strong>분량 및 형식:</strong> A4 1장 내외 (그래프 1개 + 300자 이상 분석 코멘트)</li><li><strong>필수 출처:</strong> 한국은행 경제통계시스템(ECOS) 또는 통계청(KOSIS)</li><li><strong>감점 유의사항:</strong> 지표 단위(%, %p) 혼동 주의 및 출처 누락 금지</li></ul>",
+      link: "https://app.notion.com/p/41b973637abb810aa1b2c44e9bddc621"
+    },
+    gdplab: {
+      tag: "수업 활동 02 · 온라인 시뮬레이터",
+      title: "GDP 인터랙티브 랩 온라인 실습",
+      desc: "명목 GDP와 실질 GDP가 기준연도에 따라 어떻게 달라지는지 직접 수치를 조정하며 익히는 실습입니다.",
+      details:
+        "<ul><li><strong>접속 주소:</strong> <code>gdp.tellzzang.com</code> (스마트폰·태블릿 모두 가능)</li><li><strong>실습 미션:</strong> 가격 상승 시나리오와 산출량 증가 시나리오 각각 비교 후 학습지 2쪽 기록</li></ul>",
       link: "https://gdp.tellzzang.com/"
     },
-    club: {
-      tag: "PROJECT 02 · STUDENT ARCHIVE",
-      title: "경제·사회참여 동아리 아카이브",
-      desc: "운양고 경제·사회참여 동아리 학생들의 1년간 탐구 보고서, 캠페인, 발표 자료를 전시하는 디지털 아카이브입니다.",
+    clinic: {
+      tag: "학습 지원 03 · 1:1 개념 클리닉",
+      title: "2학기 지필평가 대비 핵심 개념 클리닉",
+      desc: "경제 지필평가 고난도 자료 해석 문항에서 자주 틀리는 함정을 집중 점검하는 방과 후 클리닉입니다.",
       details:
-        "<ul><li><strong>노션 확장:</strong> 노션 데이터베이스에 학생 결과물을 누적하고 홈페이지 카드 그리드로 자동 노출</li><li><strong>기대 효과:</strong> 생기부 연계 포트폴리오 및 학부모·신입생 홍보 페이지로 활용</li></ul>",
-      link: "https://tellzzang.github.io/club2025.html"
-    },
-    hub: {
-      tag: "PROJECT 03 · AI WORKFLOW",
-      title: "교사 생산성 AI 에이전트 허브",
-      desc: "노션 메인 DB 일정 관리, .hwpx 평가원 수준 문항 출제, 구글 드라이브·GitHub Pages 배포를 통합한 자동화 시스템입니다.",
-      details:
-        "<ul><li><strong>핵심 스택:</strong> Notion MCP + GitHub Pages + Python 자동화</li><li><strong>특징:</strong> 메인 도메인(<code>tellzzang.com</code>)을 보존하면서 목적별 서브도메인 웹앱을 수 초 내 배포</li></ul>",
+        "<ul><li><strong>주요 주제:</strong> 고용률·실업률 계산 함정, 환율 상승/하락의 수출입 효과, 기회비용 비교</li><li><strong>신청 방법:</strong> 수업 종료 후 교탁 앞 희망 시간표에 이름 기재</li></ul>",
       link: "https://tellzzang.com"
+    },
+    ws03: {
+      tag: "학습지 03호 · 이번 주 수업 자료 (샘플)",
+      title: "[03호] 실업률 통계의 착시와 고용지표",
+      desc: "15세 이상 인구, 경제활동인구, 비경제활동인구 구분부터 실망실업자·구직단념자가 실업률에 미치는 영향까지 다룹니다.",
+      details:
+        "<ul><li><strong>핵심 공식:</strong> 실업률 = (실업자 ÷ 경제활동인구) × 100 / 고용률 = (취업자 ÷ 15세 이상 인구) × 100</li><li><strong>수업 준비:</strong> 실제 Google Drive / 노션 첨부파일 링크가 연결되는 자리입니다 (샘플).</li></ul>",
+      link: "https://app.notion.com/p/41b973637abb810aa1b2c44e9bddc621"
+    },
+    ws02: {
+      tag: "학습지 02호 · 배포 완료 (샘플)",
+      title: "[02호] 인플레이션과 물가지수 계산",
+      desc: "소비자물가지수(CPI)의 가중치 개념과 체감물가가 공식 물가상승률과 다르게 느껴지는 이유를 분석합니다.",
+      details:
+        "<ul><li><strong>핵심 개념:</strong> 수요견인 인플레이션 vs 비용인상 인플레이션, 채권자·채무자 유불리</li><li><strong>참고:</strong> 정식 운영 시 학생용 PDF 다운로드 링크가 바로 연결됩니다.</li></ul>",
+      link: "https://app.notion.com/p/41b973637abb810aa1b2c44e9bddc621"
+    },
+    ws01: {
+      tag: "학습지 01호 · 배포 완료 (샘플)",
+      title: "[01호] 명목 GDP vs 실질 GDP 완전 정복",
+      desc: "GDP에 포함되는 항목과 제외되는 항목(중고 거래, 가사노동 등)을 구별하고 GDP 디플레이터를 계산합니다.",
+      details:
+        "<ul><li><strong>연계 실습:</strong> <code>gdp.tellzzang.com</code> 시뮬레이터와 함께 복습 추천</li></ul>",
+      link: "https://gdp.tellzzang.com/"
+    },
+    ws04: {
+      tag: "학습지 04호 · 다음 주 업로드 예정",
+      title: "[04호] 기준금리 변동과 환율 시나리오",
+      desc: "한국은행 금융통화위원회의 기준금리 결정이 시중 금리, 환율, 물가에 미치는 연쇄 효과를 정리합니다.",
+      details:
+        "<ul><li><strong>업로드 예정일:</strong> 2026-11-23 오전 08:30</li></ul>",
+      link: "https://app.notion.com/p/41b973637abb810aa1b2c44e9bddc621"
+    },
+    ws05: {
+      tag: "특강 자료 · 시험 대비 준비 중",
+      title: "[특강] 2학기 지필평가 고난도 기출 모음",
+      desc: "한국교육과정평가원 기출 유형의 표·그래프 분석 문항 10선과 해설 노트를 제공합니다.",
+      details:
+        "<ul><li><strong>업로드 예정일:</strong> 2026-11-30</li></ul>",
+      link: "https://app.notion.com/p/41b973637abb810aa1b2c44e9bddc621"
     }
   };
 
@@ -172,8 +231,8 @@
   const modalDetails = document.getElementById("modalDetails");
   const modalLink = document.getElementById("modalLink");
 
-  function openProjectModal(key) {
-    const item = projectData[key];
+  function openDetailModal(key) {
+    const item = detailData[key];
     if (!item || !projectModal) return;
     modalTag.textContent = item.tag;
     modalTitle.textContent = item.title;
@@ -183,12 +242,13 @@
     projectModal.hidden = false;
   }
 
-  document.querySelectorAll(".project-card").forEach((card) => {
-    card.addEventListener("click", () => openProjectModal(card.dataset.project));
+  document.querySelectorAll("[data-project], [data-worksheet]").forEach((card) => {
+    const key = card.dataset.project || card.dataset.worksheet;
+    card.addEventListener("click", () => openDetailModal(key));
     card.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        openProjectModal(card.dataset.project);
+        openDetailModal(key);
       }
     });
   });
@@ -224,7 +284,6 @@
     if (sourceModal) sourceModal.hidden = true;
   });
 
-  // Close modals on backdrop click or Escape
   [projectModal, sourceModal].forEach((modal) => {
     modal?.addEventListener("click", (e) => {
       if (e.target === modal) modal.hidden = true;
