@@ -271,4 +271,24 @@
       }
     });
   });
+
+  // 10. Real-time Cloudflare Worker Notion Sync Hook
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("worker")) {
+    localStorage.setItem("tellzzang-worker-url", params.get("worker"));
+  }
+  const workerUrl = window.TELLZZANG_WORKER_URL || localStorage.getItem("tellzzang-worker-url");
+  if (workerUrl) {
+    fetch(workerUrl)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (!data || !data.ok) return;
+        const callout = (data.blocks || []).find((b) => b.type === "callout");
+        const ribbonEl = document.getElementById("liveRibbonText");
+        if (callout && ribbonEl) {
+          ribbonEl.textContent = `${callout.icon || "📢"} ${callout.text} `;
+        }
+      })
+      .catch(() => {});
+  }
 })();

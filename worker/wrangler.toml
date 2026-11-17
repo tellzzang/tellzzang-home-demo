@@ -1,0 +1,7 @@
+name = "tellzzang-notion-proxy"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://class.tellzzang.com"
+DEFAULT_PAGE_ID = "41b97363-7abb-810a-a1b2-c44e9bddc621"
