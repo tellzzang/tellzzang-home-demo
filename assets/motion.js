@@ -283,10 +283,39 @@
     localStorage.getItem("tellzzang-worker-url") ||
     DEFAULT_WORKER_URL;
 
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function mapUnitKey(unitText) {
+    if (unitText.startsWith("III")) return "III";
+    if (unitText.startsWith("II")) return "II";
+    if (unitText.startsWith("I")) return "I";
+    return "exam";
+  }
+
+  function mapStatusClass(status) {
+    if (status.includes("이번") || status.includes("마감")) return "chip-hot";
+    if (status.includes("완료") || status.includes("가능")) return "chip-done";
+    return "chip-soon";
+  }
+
+  function mapRowHref(title) {
+    if (title.includes("03호") || title.includes("실업률")) return "./ws-03/index.html";
+    if (title.includes("보고서") || title.includes("수행")) return "./report/index.html";
+    if (title.includes("클리닉") || title.includes("지필") || title.includes("특강")) return "./clinic/index.html";
+    if (title.includes("01호") || title.includes("GDP")) return "https://gdp.tellzzang.com";
+    return "";
+  }
+
   const pageIdMeta = document.querySelector('meta[name="notion-page-id"]')?.content;
   const fetchUrl = pageIdMeta
-    ? `${workerUrl}?pageId=${encodeURIComponent(pageIdMeta)}`
-    : workerUrl;
+    ? `${workerUrl}?pageId=${encodeURIComponent(pageIdMeta)}&_t=${Math.floor(Date.now() / 10000)}`
+    : `${workerUrl}?_t=${Math.floor(Date.now() / 10000)}`;
 
   if (fetchUrl) {
     fetch(fetchUrl)
@@ -304,7 +333,46 @@
 
         const liveBadge = document.getElementById("liveSyncBadge");
         if (liveBadge) {
-          liveBadge.textContent = "🟢 Notion 실시간 연결됨";
+          liveBadge.textContent = `🟢 Notion 실시간 동기화 (${new Date(data.lastEditedTime).toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit" })})`;
+        }
+
+        // Sub-page live title & description update
+        const subTitleEl = document.getElementById("liveSubTitle");
+        if (subTitleEl && data.title) {
+          subTitleEl.textContent = data.title;
+        }
+        const subDescEl = document.getElementById("liveSubDesc");
+        if (subDescEl && callout?.text) {
+          subDescEl.textContent = callout.text;
+        }
+
+        // Main page live table sync (#liveWsList)
+        const liveWsList = document.getElementById("liveWsList");
+        const tableRows = data.tables?.[0]?.rows;
+        if (liveWsList && Array.isArray(tableRows) && tableRows.length > 1) {
+          liveWsList.innerHTML = tableRows
+            .slice(1)
+            .map((cols) => {
+              const [unit = "", title = "", desc = "", date = "", status = ""] = cols;
+              const cat = mapUnitKey(unit);
+              const chip = mapStatusClass(status);
+              const href = mapRowHref(title);
+              const inner = `
+                <div>
+                  <div class="ws-meta">${escapeHtml(unit)} · ${escapeHtml(date)} · Notion Live</div>
+                  <h3>${escapeHtml(title)}</h3>
+                  <p>${escapeHtml(desc)}</p>
+                </div>
+                <span class="status-chip ${chip}">${escapeHtml(status || "안내")}</span>
+              `;
+              if (!href) {
+                return `<div class="ws-row" data-category="${cat}">${inner}</div>`;
+              }
+              const ext = href.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : "data-transition";
+              return `<a href="${href}" class="ws-row" data-category="${cat}" ${ext}>${inner}</a>`;
+            })
+            .join("");
+          applyWsFilter();
         }
       })
       .catch(() => {});

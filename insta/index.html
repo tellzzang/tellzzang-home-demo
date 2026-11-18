@@ -835,6 +835,16 @@
           posts[0].sub = "Notion 실시간 동기화됨";
           render();
         }
+        fetch(`https://tellzzang-notion-proxy.tellzzang.workers.dev?pageId=41b97363-7abb-81bc-998b-d56a22c059a2&_t=${Math.floor(Date.now() / 10000)}`)
+          .then((r) => (r.ok ? r.json() : null))
+          .then((sub) => {
+            if (sub?.ok && sub.title) {
+              posts[1].title = sub.title;
+              posts[1].sub = "Notion 하위 페이지 실시간 연동됨";
+              render();
+            }
+          })
+          .catch(() => {});
       });
     })();
   </script>
