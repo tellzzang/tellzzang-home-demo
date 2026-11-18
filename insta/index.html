@@ -826,6 +826,16 @@
       });
 
       render();
+
+      window.addEventListener("notion:synced", (e) => {
+        const data = e.detail;
+        const callout = (data?.blocks || []).find((b) => b.type === "callout");
+        if (callout && callout.text) {
+          posts[0].caption = callout.text;
+          posts[0].sub = "Notion 실시간 동기화됨";
+          render();
+        }
+      });
     })();
   </script>
 </body>

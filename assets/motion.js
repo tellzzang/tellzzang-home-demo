@@ -273,20 +273,38 @@
   });
 
   // 10. Real-time Cloudflare Worker Notion Sync Hook
+  const DEFAULT_WORKER_URL = "https://tellzzang-notion-proxy.tellzzang.workers.dev";
   const params = new URLSearchParams(window.location.search);
   if (params.get("worker")) {
     localStorage.setItem("tellzzang-worker-url", params.get("worker"));
   }
-  const workerUrl = window.TELLZZANG_WORKER_URL || localStorage.getItem("tellzzang-worker-url");
-  if (workerUrl) {
-    fetch(workerUrl)
+  const workerUrl =
+    window.TELLZZANG_WORKER_URL ||
+    localStorage.getItem("tellzzang-worker-url") ||
+    DEFAULT_WORKER_URL;
+
+  const pageIdMeta = document.querySelector('meta[name="notion-page-id"]')?.content;
+  const fetchUrl = pageIdMeta
+    ? `${workerUrl}?pageId=${encodeURIComponent(pageIdMeta)}`
+    : workerUrl;
+
+  if (fetchUrl) {
+    fetch(fetchUrl)
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => {
         if (!data || !data.ok) return;
+        window.__NOTION_LIVE_DATA = data;
+        window.dispatchEvent(new CustomEvent("notion:synced", { detail: data }));
+
         const callout = (data.blocks || []).find((b) => b.type === "callout");
         const ribbonEl = document.getElementById("liveRibbonText");
         if (callout && ribbonEl) {
           ribbonEl.textContent = `${callout.icon || "📢"} ${callout.text} `;
+        }
+
+        const liveBadge = document.getElementById("liveSyncBadge");
+        if (liveBadge) {
+          liveBadge.textContent = "🟢 Notion 실시간 연결됨";
         }
       })
       .catch(() => {});
