@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>@tellzzang.class · 인스타그램 피드 뷰 | 운양고 경제 클래스</title>
-  <meta name="description" content="노션 수업 공지와 학습지를 인스타그램 스토리·피드 형식으로 한눈에 보는 학생용 클래스 피드입니다." />
+  <title>@tellzzang.class · 인스타그램 피드 | 운양고 경제 클래스</title>
+  <meta name="description" content="노션 수업 공지와 학습지를 인스타그램 타임라인 피드 형식으로 한눈에 읽는 학생용 클래스 피드입니다." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -12,26 +12,26 @@
   <link rel="stylesheet" href="../assets/shared.css" />
   <style>
     .ig-shell {
-      max-width: 935px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: 1.5rem 1rem 5.5rem;
+      padding: 1.25rem 0.9rem 6rem;
     }
 
     /* Profile Header */
     .ig-profile {
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 2rem;
+      grid-template-columns: 96px 1fr;
+      gap: 1.4rem;
       align-items: center;
-      padding-bottom: 1.6rem;
+      padding-bottom: 1.35rem;
       border-bottom: 1px solid var(--border);
     }
 
     .ig-avatar-ring {
-      width: 112px;
-      height: 112px;
+      width: 92px;
+      height: 92px;
       border-radius: 50%;
-      padding: 3.5px;
+      padding: 3px;
       background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
       display: grid;
       place-items: center;
@@ -51,48 +51,49 @@
       border: 3px solid var(--bg);
       display: grid;
       place-items: center;
-      font-size: 2.6rem;
+      font-size: 2.2rem;
     }
 
     .ig-handle-row {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 0.7rem;
-      margin-bottom: 0.75rem;
+      gap: 0.5rem;
+      margin-bottom: 0.55rem;
     }
 
     .ig-handle {
       margin: 0;
-      font-size: 1.35rem;
-      font-weight: 700;
+      font-size: 1.22rem;
+      font-weight: 800;
       letter-spacing: -0.02em;
     }
 
     .ig-verified {
       display: inline-grid;
       place-items: center;
-      width: 18px;
-      height: 18px;
+      width: 17px;
+      height: 17px;
       border-radius: 50%;
       background: #0095f6;
       color: #fff;
-      font-size: 0.68rem;
+      font-size: 0.65rem;
       font-weight: 800;
     }
 
     .ig-stats {
       display: flex;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 0.7rem;
-      font-size: 0.93rem;
+      gap: 1.15rem;
+      margin-bottom: 0.55rem;
+      font-size: 0.88rem;
     }
 
     .ig-bio {
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
       margin: 0;
+      line-height: 1.5;
     }
 
     .ig-bio strong {
@@ -102,9 +103,9 @@
     /* Stories Row */
     .ig-stories {
       display: flex;
-      gap: 1.15rem;
+      gap: 1rem;
       overflow-x: auto;
-      padding: 1.35rem 0.25rem;
+      padding: 1.15rem 0.15rem;
       border-bottom: 1px solid var(--border);
       scrollbar-width: none;
     }
@@ -118,20 +119,20 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       background: none;
       border: none;
       color: var(--text);
       font-family: inherit;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 600;
       cursor: pointer;
       padding: 0;
     }
 
     .story-ring {
-      width: 68px;
-      height: 68px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       padding: 2.5px;
       background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
@@ -152,15 +153,15 @@
       border: 2.5px solid var(--bg);
       display: grid;
       place-items: center;
-      font-size: 1.55rem;
+      font-size: 1.45rem;
     }
 
-    /* Tabs */
+    /* View Mode Tabs */
     .ig-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 2.2rem;
-      margin-bottom: 0.9rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.15rem;
     }
 
     .ig-tab {
@@ -170,18 +171,178 @@
       font-family: inherit;
       font-size: 0.84rem;
       font-weight: 700;
-      padding: 0.9rem 0.2rem;
-      border-top: 2px solid transparent;
+      padding: 0.85rem 0.25rem;
+      border-bottom: 2px solid transparent;
       cursor: pointer;
-      letter-spacing: 0.04em;
+      text-align: center;
+      transition: color 0.2s ease, border-color 0.2s ease;
     }
 
     .ig-tab.active {
       color: var(--text);
-      border-top-color: var(--text);
+      border-bottom-color: var(--text);
     }
 
-    /* 3-Column Feed Grid */
+    /* 1-Column Instagram Timeline Feed (Default!) */
+    .ig-stream {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .ig-post-card {
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: var(--surface-solid);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .ig-post-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.05rem;
+    }
+
+    .ig-author {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .ig-author-mini {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      font-size: 1.05rem;
+    }
+
+    .ig-post-date {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .ig-post-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .ig-post-media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      padding: clamp(1.35rem, 4vw, 2.2rem);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .ig-media-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
+      opacity: 0.85;
+    }
+
+    .ig-media-title {
+      margin: 0.35rem 0 0.5rem;
+      font-size: clamp(1.5rem, 5vw, 2.15rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+    }
+
+    .ig-media-sub {
+      margin: 0;
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+      opacity: 0.92;
+    }
+
+    .ig-post-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 1rem 0.35rem;
+    }
+
+    .ig-action-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .ig-act-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      border: none;
+      background: none;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      padding: 0.35rem 0.45rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.16s ease, background 0.16s ease;
+    }
+
+    .ig-act-btn:hover {
+      background: var(--bg-alt);
+    }
+
+    .ig-act-btn:active {
+      transform: scale(1.14);
+    }
+
+    .ig-post-body {
+      padding: 0.2rem 1.05rem 1.15rem;
+    }
+
+    .ig-caption {
+      margin: 0 0 0.55rem;
+      font-size: 0.94rem;
+      line-height: 1.62;
+    }
+
+    .ig-tags {
+      margin: 0 0 0.9rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+    }
+
+    .ig-open-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 42px;
+      border-radius: 12px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .ig-open-btn:hover {
+      border-color: var(--border-strong);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    /* Optional 3-Column Compact Grid Mode (clean, zero text clipping) */
     .ig-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -189,115 +350,38 @@
     }
 
     .ig-tile {
-      position: relative;
       aspect-ratio: 1 / 1;
-      overflow: hidden;
-      border-radius: 4px;
-      cursor: pointer;
-      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem;
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: clamp(0.65rem, 2vw, 1.25rem);
-      color: #ffffff;
-      transition: transform 0.28s var(--ease-apple);
-    }
-
-    .ig-tile:hover {
-      transform: scale(0.985);
+      cursor: pointer;
     }
 
     .ig-tile-badge {
       align-self: flex-end;
-      font-size: 0.72rem;
+      font-size: 0.65rem;
       font-weight: 700;
-      padding: 0.18rem 0.5rem;
+      padding: 0.15rem 0.42rem;
       border-radius: 999px;
       background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(8px);
     }
 
     .ig-tile-title {
-      font-size: clamp(0.84rem, 2.2vw, 1.28rem);
+      font-size: clamp(0.82rem, 2.4vw, 1.08rem);
       font-weight: 800;
       line-height: 1.25;
-      letter-spacing: -0.025em;
+      word-break: keep-all;
     }
 
-    .ig-tile-sub {
-      font-size: clamp(0.68rem, 1.4vw, 0.84rem);
-      opacity: 0.88;
-      margin-top: 0.25rem;
-    }
-
-    .ig-hover-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.48);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      font-weight: 700;
-      font-size: 0.92rem;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .ig-tile:hover .ig-hover-overlay {
-      opacity: 1;
-    }
-
-    .ig-tile[hidden] {
-      display: none;
-    }
-
-    /* Post Modal */
-    .ig-post-modal {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 1.3rem;
-      align-items: stretch;
-    }
-
-    .ig-post-visual {
-      aspect-ratio: 1 / 1;
-      border-radius: 16px;
-      padding: 1.6rem;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .ig-post-meta {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 0.9rem;
-    }
-
-    .ig-action-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.55rem 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .ig-icon-act {
-      border: none;
-      background: none;
-      color: var(--text);
-      font-size: 1.25rem;
-      cursor: pointer;
-      padding: 0.2rem 0.4rem;
-      transition: transform 0.18s ease;
-    }
-
-    .ig-icon-act:active {
-      transform: scale(1.25);
+    .ig-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-muted);
+      border: 1px dashed var(--border);
+      border-radius: 20px;
     }
 
     /* Fullscreen Story Modal */
@@ -316,16 +400,14 @@
     }
 
     .story-card {
-      width: min(100%, 410px);
-      height: min(84vh, 690px);
+      width: min(100%, 400px);
+      height: min(84vh, 660px);
       border-radius: 26px;
       padding: 1.1rem 1.3rem 1.6rem;
       color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      position: relative;
-      overflow: hidden;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
     }
 
@@ -342,32 +424,24 @@
       background: #ffffff;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 640px) {
       .ig-profile {
-        grid-template-columns: 84px 1fr;
-        gap: 1.1rem;
+        grid-template-columns: 76px 1fr;
+        gap: 1rem;
       }
 
       .ig-avatar-ring {
-        width: 82px;
-        height: 82px;
+        width: 74px;
+        height: 74px;
       }
 
       .ig-avatar-inner {
-        font-size: 1.9rem;
+        font-size: 1.75rem;
       }
 
       .ig-stats {
-        gap: 0.9rem;
+        gap: 0.85rem;
         font-size: 0.82rem;
-      }
-
-      .ig-post-modal {
-        grid-template-columns: 1fr;
-      }
-
-      .ig-grid {
-        gap: 2px;
       }
     }
   </style>
@@ -381,7 +455,7 @@
       <a href="../index.html" class="brand" data-transition>
         <span aria-hidden="true">📚</span>
         <span>Tellzzang Class</span>
-        <span class="brand-pill">인스타 피드 뷰</span>
+        <span class="brand-pill">인스타 피드</span>
       </a>
 
       <nav class="desktop-nav" aria-label="주 메뉴">
@@ -394,13 +468,13 @@
 
       <div class="header-actions">
         <button class="icon-btn" id="themeCycleBtn" type="button">🍏 애플 클린</button>
-        <a class="cta-sm" href="../index.html" data-transition>애플 뷰 전환</a>
+        <a class="cta-sm" href="../index.html" data-transition>애플 홈 전환</a>
       </div>
     </div>
   </header>
 
   <main class="ig-shell">
-    <!-- Instagram Profile Header -->
+    <!-- Profile Header -->
     <section class="ig-profile">
       <div class="ig-avatar-ring" id="openMainStory" title="이번 주 공지 스토리 보기">
         <div class="ig-avatar-inner">📚</div>
@@ -410,8 +484,7 @@
         <div class="ig-handle-row">
           <h1 class="ig-handle">tellzzang.class</h1>
           <span class="ig-verified" title="공식 클래스 계정">✓</span>
-          <a href="../index.html" class="pill-btn" data-transition>🍎 애플 홈으로 보기</a>
-          <button class="pill-btn active" id="notifyBtn" type="button">공지 알림 켜짐</button>
+          <a href="../index.html" class="pill-btn" data-transition>🍎 애플 뷰</a>
         </div>
 
         <div class="ig-stats">
@@ -422,12 +495,12 @@
 
         <p class="ig-bio">
           <strong>운양고 경제 클래스 | 안태일(탤짱) 선생님</strong><br />
-          매주 월 08:30 학습지 · 공지 · 경제 카드뉴스 자동 업로드 · <code>class.tellzzang.com</code>
+          매주 월 08:30 학습지 · 공지 카드뉴스 · <code>class.tellzzang.com</code>
         </p>
       </div>
     </section>
 
-    <!-- Instagram Story Highlights -->
+    <!-- Stories -->
     <section class="ig-stories" aria-label="스토리 하이라이트">
       <button class="ig-story-btn" data-story="0" type="button">
         <span class="story-ring"><span class="story-core">📢</span></span>
@@ -451,57 +524,16 @@
       </button>
     </section>
 
-    <!-- Feed / Saved Tabs -->
+    <!-- Tabs: 1-Col Feed (Default) | 3-Col Grid | Saved -->
     <div class="ig-tabs" role="tablist">
-      <button class="ig-tab active" data-ig-tab="all" type="button">⊞ 게시물 (6)</button>
-      <button class="ig-tab" data-ig-tab="saved" type="button">🔖 저장한 자료</button>
+      <button class="ig-tab active" data-ig-tab="feed" type="button">📱 피드 보기</button>
+      <button class="ig-tab" data-ig-tab="grid" type="button">⊞ 모아보기</button>
+      <button class="ig-tab" data-ig-tab="saved" type="button">🔖 저장함</button>
     </div>
 
-    <!-- 3-Column Instagram Grid -->
-    <section class="ig-grid" id="igGrid" aria-label="클래스 피드 그리드"></section>
+    <!-- Feed Container -->
+    <section id="igFeedContainer" aria-label="클래스 피드"></section>
   </main>
-
-  <!-- Post Detail Modal -->
-  <div class="modal-backdrop" id="igModal" hidden>
-    <div class="modal-box" role="dialog" aria-modal="true">
-      <button class="modal-close" id="closeIgModal" type="button" aria-label="닫기">✕</button>
-      <div class="ig-post-modal">
-        <div class="ig-post-visual" id="igModalVisual">
-          <span class="ig-tile-badge" id="igModalBadge">CARD</span>
-          <div>
-            <div class="ig-tile-title" id="igModalVisualTitle" style="font-size: 1.55rem;"></div>
-            <div class="ig-tile-sub" id="igModalVisualSub" style="font-size: 0.94rem;"></div>
-          </div>
-        </div>
-
-        <div class="ig-post-meta">
-          <div>
-            <div style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.75rem;">
-              <span style="font-size: 1.25rem;">📚</span>
-              <strong>tellzzang.class</strong>
-              <span class="ig-verified">✓</span>
-            </div>
-            <h3 id="igModalCaptionTitle" style="margin: 0 0 0.5rem;"></h3>
-            <p id="igModalCaption" style="margin: 0 0 0.8rem; font-size: 0.92rem; color: var(--text-muted);"></p>
-            <p id="igModalTags" class="mono" style="font-size: 0.78rem; color: var(--accent); margin: 0;"></p>
-          </div>
-
-          <div>
-            <div class="ig-action-row">
-              <div>
-                <button class="ig-icon-act" id="igLikeBtn" type="button" title="좋아요">🤍</button>
-                <span id="igLikeCount" style="font-size: 0.86rem; font-weight: 700;">0</span>
-              </div>
-              <button class="ig-icon-act" id="igSaveBtn" type="button" title="북마크 저장">🔖</button>
-            </div>
-            <div style="margin-top: 0.85rem; display: flex; gap: 0.6rem;">
-              <a id="igModalLink" href="#" class="btn-apple-primary" style="flex: 1;" data-transition>상세 페이지 열기 &gt;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Fullscreen Story Viewer -->
   <div class="story-modal" id="storyModal" hidden>
@@ -535,69 +567,93 @@
       const posts = [
         {
           id: "p1",
+          date: "11월 17일 · 필독 공지",
           badge: "필독 공지",
           gradient: "linear-gradient(135deg, #0a0b10 0%, #0071e3 100%)",
-          title: "11월 3주차\n수업 공지",
-          sub: "03호 학습지 지참 · 금 17시 마감",
+          kicker: "NOTICE · WEEK 03",
+          title: "11월 3주차 수업 공지",
+          shortTitle: "3주차 공지",
+          sub: "03호 학습지 지참 · 수행평가 금 17시 마감",
           caption: "다음 경제 수업 시간에는 [03호] 물가와 실업 학습지를 출력하거나 태블릿에 저장해 꼭 지참하세요! 수행평가 보고서 초안 제출도 이번 주 금요일 17:00 마감입니다.",
           tags: "#운양고경제 #이번주공지 #03호학습지",
           likes: 34,
-          link: "../ws-03/index.html"
+          link: "../ws-03/index.html",
+          cta: "03호 학습지 & 시뮬레이터 열기 >"
         },
         {
           id: "p2",
+          date: "11월 16일 · 심화 개념",
           badge: "03호 심화",
           gradient: "linear-gradient(135deg, #5e5ce6 0%, #ff375f 100%)",
-          title: "실업률의\n역설 체험",
-          sub: "구직 단념 시 실업률은 왜 떨어질까?",
+          kicker: "INTERACTIVE LAB · 03",
+          title: "실업률의 역설 체험",
+          shortTitle: "실업률 착시",
+          sub: "구직 단념자가 늘면 실업률은 왜 떨어질까?",
           caption: "실망실업자가 비경제활동인구로 빠져나가면 실업률은 내려가지만 고용률은 그대로입니다. 03호 전용 시뮬레이터에서 슬라이더를 밀며 직접 확인해 보세요!",
           tags: "#실업률 #고용률 #실망실업자 #수능함정",
           likes: 42,
-          link: "../ws-03/index.html"
+          link: "../ws-03/index.html",
+          cta: "실업률 시뮬레이터 바로 체험하기 >"
         },
         {
           id: "p3",
+          date: "11월 14일 · 수행평가",
           badge: "수행평가",
           gradient: "linear-gradient(135deg, #0f766e 0%, #30d158 100%)",
-          title: "거시경제\n지표 보고서",
-          sub: "A4 1장 · ECOS/KOSIS 출처 필수",
+          kicker: "PERFORMANCE TASK",
+          title: "거시경제 지표 분석 보고서",
+          shortTitle: "지표 보고서",
+          sub: "A4 1장 내외 · 한국은행 ECOS / 통계청 KOSIS 출처 필수",
           caption: "최근 3개년 GDP 성장률, CPI 물가상승률, 실업률 추이를 그래프 1개로 묶어 해석하는 수행평가 가이드입니다. %와 %p 단위 구분을 잊지 마세요!",
           tags: "#수행평가 #거시경제 #한국은행ECOS",
           likes: 29,
-          link: "../report/index.html"
+          link: "../report/index.html",
+          cta: "그래프 예시 & 배점 확인하기 >"
         },
         {
           id: "p4",
-          badge: "시험 대비",
+          date: "11월 12일 · 시험 대비",
+          badge: "지필 대비",
           gradient: "linear-gradient(135deg, #1d1d1f 0%, #ff9f0a 100%)",
-          title: "지필평가\n3D 클리닉",
-          sub: "화·목 16:20 · 킬러 개념 4선",
-          caption: "명목 vs 실질 GDP, 고용지표 표 해석, 기회비용, 환율 변동까지! 터치하면 뒤집히는 3D 개념 카드로 15분 만에 빈출 함정을 정리하세요.",
+          kicker: "EXAM CLINIC",
+          title: "2학기 지필평가 3D 클리닉",
+          shortTitle: "지필 클리닉",
+          sub: "화·목 16:20~17:20 · 킬러 개념 4선 15분 점검",
+          caption: "명목 vs 실질 GDP, 고용지표 표 해석, 기회비용, 환율 변동까지! 터치하면 뒤집히는 3D 개념 카드로 빈출 함정을 정리하고 클리닉 시간도 확인하세요.",
           tags: "#2학기지필 #개념클리닉 #3D플래시카드",
           likes: 51,
-          link: "../clinic/index.html"
+          link: "../clinic/index.html",
+          cta: "3D 개념 카드 뒤집어 보기 >"
         },
         {
           id: "p5",
+          date: "11월 09일 · 실습 웹앱",
           badge: "실습 랩",
           gradient: "linear-gradient(135deg, #0071e3 0%, #00c7be 100%)",
-          title: "GDP 랩\n시뮬레이터",
-          sub: "gdp.tellzzang.com 연동",
+          kicker: "GDP.TELLZZANG.COM",
+          title: "GDP 인터랙티브 랩",
+          shortTitle: "GDP 랩",
+          sub: "기준연도와 비교연도 가격 변화 직접 실습하기",
           caption: "기준연도 가격과 당해연도 가격 변화에 따라 실질 GDP와 GDP 디플레이터가 어떻게 움직이는지 직접 숫자를 바꿔 보며 익히는 웹앱입니다.",
           tags: "#GDP디플레이터 #명목GDP #실질GDP",
           likes: 27,
-          link: "https://gdp.tellzzang.com"
+          link: "https://gdp.tellzzang.com",
+          cta: "gdp.tellzzang.com 열기 ↗"
         },
         {
           id: "p6",
-          badge: "예고편",
+          date: "11월 23일 예정 · 예고",
+          badge: "다음 주",
           gradient: "linear-gradient(135deg, #3a1c71 0%, #d76d77 50%, #ffaf7b 100%)",
-          title: "04호 예고\n금리와 환율",
-          sub: "11월 23일 월요일 08:30 오픈",
+          kicker: "COMING NEXT · 04",
+          title: "04호 예고: 금리와 환율",
+          shortTitle: "금리·환율",
+          sub: "11월 23일 월요일 오전 08:30 오픈 예정",
           caption: "한국은행 기준금리 변동이 원/달러 환율, 수입 물가, 수출 기업 채산성에 미치는 연쇄 효과를 시나리오별로 정리한 04호 학습지가 곧 올라옵니다.",
           tags: "#기준금리 #환율변동 #04호예고",
           likes: 19,
-          link: "../index.html"
+          link: "../index.html",
+          cta: "전체 학습지 자료실 보기 >"
         }
       ];
 
@@ -609,99 +665,127 @@
         { emoji: "📈", bg: "linear-gradient(160deg, #00c7be, #0a2540)", title: "GDP 인터랙티브 랩", body: "gdp.tellzzang.com 에서 명목·실질 GDP 차이를 직접 조작해 보세요.", cta: "https://gdp.tellzzang.com" }
       ];
 
-      const grid = document.getElementById("igGrid");
+      const container = document.getElementById("igFeedContainer");
       const savedSet = new Set(JSON.parse(localStorage.getItem("tellzzang-ig-saved") || "[]"));
       const likedSet = new Set(JSON.parse(localStorage.getItem("tellzzang-ig-liked") || "[]"));
-      let currentTab = "all";
-      let activePost = null;
+      let currentTab = "feed";
 
-      function renderGrid() {
-        if (!grid) return;
-        grid.innerHTML = "";
-        posts.forEach((p) => {
-          const tile = document.createElement("article");
-          tile.className = "ig-tile";
-          tile.style.background = p.gradient;
-          tile.hidden = currentTab === "saved" && !savedSet.has(p.id);
-          const count = p.likes + (likedSet.has(p.id) ? 1 : 0);
-          tile.innerHTML = `
-            <span class="ig-tile-badge">${p.badge}</span>
-            <div>
-              <div class="ig-tile-title">${p.title.replace("\n", "<br />")}</div>
-              <div class="ig-tile-sub">${p.sub}</div>
+      function toggleLike(id) {
+        if (likedSet.has(id)) likedSet.delete(id);
+        else likedSet.add(id);
+        localStorage.setItem("tellzzang-ig-liked", JSON.stringify([...likedSet]));
+        render();
+      }
+
+      function toggleSave(id) {
+        if (savedSet.has(id)) savedSet.delete(id);
+        else savedSet.add(id);
+        localStorage.setItem("tellzzang-ig-saved", JSON.stringify([...savedSet]));
+        render();
+      }
+
+      function render() {
+        if (!container) return;
+        const list = currentTab === "saved" ? posts.filter((p) => savedSet.has(p.id)) : posts;
+
+        if (currentTab === "grid") {
+          const grid = document.createElement("div");
+          grid.className = "ig-grid";
+          list.forEach((p) => {
+            const tile = document.createElement("a");
+            tile.className = "ig-tile";
+            tile.href = p.link;
+            if (p.link.startsWith("http")) {
+              tile.target = "_blank";
+              tile.rel = "noopener noreferrer";
+            }
+            tile.style.background = p.gradient;
+            tile.innerHTML = `
+              <span class="ig-tile-badge">${p.badge}</span>
+              <span class="ig-tile-title">${p.shortTitle}</span>
+            `;
+            grid.appendChild(tile);
+          });
+          container.replaceChildren(grid);
+          return;
+        }
+
+        if (list.length === 0) {
+          container.innerHTML = `<div class="ig-empty">아직 저장한 게시물이 없습니다.<br />피드 우측 <strong>🔖 저장</strong> 버튼을 눌러 모아보세요!</div>`;
+          return;
+        }
+
+        const stream = document.createElement("div");
+        stream.className = "ig-stream";
+
+        list.forEach((p) => {
+          const liked = likedSet.has(p.id);
+          const saved = savedSet.has(p.id);
+          const likeNum = p.likes + (liked ? 1 : 0);
+          const extAttrs = p.link.startsWith("http") ? 'target="_blank" rel="noopener noreferrer"' : "data-transition";
+
+          const card = document.createElement("article");
+          card.className = "ig-post-card";
+          card.innerHTML = `
+            <div class="ig-post-head">
+              <div class="ig-author">
+                <div class="ig-author-mini">📚</div>
+                <div>
+                  <div style="font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; gap: 0.3rem;">
+                    <span>tellzzang.class</span><span class="ig-verified">✓</span>
+                  </div>
+                  <div class="ig-post-date">${p.date}</div>
+                </div>
+              </div>
+              <span class="ig-post-badge">${p.badge}</span>
             </div>
-            <div class="ig-hover-overlay"><span>❤️ ${count}</span><span>${savedSet.has(p.id) ? "🔖 저장됨" : "자세히 보기"}</span></div>
+
+            <a href="${p.link}" ${extAttrs} class="ig-post-media" style="background: ${p.gradient};">
+              <span class="ig-media-kicker">${p.kicker}</span>
+              <div>
+                <h2 class="ig-media-title">${p.title}</h2>
+                <p class="ig-media-sub">${p.sub}</p>
+              </div>
+            </a>
+
+            <div class="ig-post-actions">
+              <div class="ig-action-left">
+                <button class="ig-act-btn" type="button" data-like="${p.id}">
+                  <span>${liked ? "❤️" : "🤍"}</span><span>${likeNum}</span>
+                </button>
+                <a class="ig-act-btn" href="${p.link}" ${extAttrs}>
+                  <span>💬</span><span>자세히</span>
+                </a>
+              </div>
+              <button class="ig-act-btn" type="button" data-save="${p.id}">
+                <span>${saved ? "✅" : "🔖"}</span><span>${saved ? "저장됨" : "저장"}</span>
+              </button>
+            </div>
+
+            <div class="ig-post-body">
+              <p class="ig-caption"><strong>tellzzang.class</strong> ${p.caption}</p>
+              <p class="ig-tags">${p.tags}</p>
+              <a class="ig-open-btn" href="${p.link}" ${extAttrs}>${p.cta}</a>
+            </div>
           `;
-          tile.addEventListener("click", () => openPost(p));
-          grid.appendChild(tile);
+          stream.appendChild(card);
+        });
+
+        container.replaceChildren(stream);
+
+        container.querySelectorAll("[data-like]").forEach((btn) => {
+          btn.addEventListener("click", () => toggleLike(btn.dataset.like));
+        });
+        container.querySelectorAll("[data-save]").forEach((btn) => {
+          btn.addEventListener("click", () => toggleSave(btn.dataset.save));
         });
       }
-
-      const igModal = document.getElementById("igModal");
-      const likeBtn = document.getElementById("igLikeBtn");
-      const saveBtn = document.getElementById("igSaveBtn");
-      const likeCountEl = document.getElementById("igLikeCount");
-
-      function syncModalActions() {
-        if (!activePost) return;
-        const liked = likedSet.has(activePost.id);
-        const saved = savedSet.has(activePost.id);
-        likeBtn.textContent = liked ? "❤️" : "🤍";
-        saveBtn.textContent = saved ? "✅ 저장됨" : "🔖";
-        likeCountEl.textContent = activePost.likes + (liked ? 1 : 0);
-      }
-
-      function openPost(p) {
-        activePost = p;
-        document.getElementById("igModalVisual").style.background = p.gradient;
-        document.getElementById("igModalBadge").textContent = p.badge;
-        document.getElementById("igModalVisualTitle").innerHTML = p.title.replace("\n", "<br />");
-        document.getElementById("igModalVisualSub").textContent = p.sub;
-        document.getElementById("igModalCaptionTitle").textContent = p.title.replace("\n", " ");
-        document.getElementById("igModalCaption").textContent = p.caption;
-        document.getElementById("igModalTags").textContent = p.tags;
-        const linkEl = document.getElementById("igModalLink");
-        linkEl.href = p.link;
-        if (p.link.startsWith("http")) {
-          linkEl.target = "_blank";
-          linkEl.rel = "noopener noreferrer";
-        } else {
-          linkEl.removeAttribute("target");
-        }
-        syncModalActions();
-        igModal.hidden = false;
-      }
-
-      likeBtn?.addEventListener("click", () => {
-        if (!activePost) return;
-        if (likedSet.has(activePost.id)) likedSet.delete(activePost.id);
-        else likedSet.add(activePost.id);
-        localStorage.setItem("tellzzang-ig-liked", JSON.stringify([...likedSet]));
-        syncModalActions();
-        renderGrid();
-      });
-
-      saveBtn?.addEventListener("click", () => {
-        if (!activePost) return;
-        if (savedSet.has(activePost.id)) savedSet.delete(activePost.id);
-        else savedSet.add(activePost.id);
-        localStorage.setItem("tellzzang-ig-saved", JSON.stringify([...savedSet]));
-        syncModalActions();
-        renderGrid();
-      });
-
-      document.getElementById("closeIgModal")?.addEventListener("click", () => {
-        igModal.hidden = true;
-      });
-      igModal?.addEventListener("click", (e) => {
-        if (e.target === igModal) igModal.hidden = true;
-      });
 
       document.querySelectorAll("[data-ig-tab]").forEach((tab) => {
         tab.addEventListener("click", () => {
           currentTab = tab.dataset.igTab;
           document.querySelectorAll("[data-ig-tab]").forEach((t) => t.classList.toggle("active", t === tab));
-          renderGrid();
+          render();
         });
       });
 
@@ -717,8 +801,7 @@
         document.getElementById("storyEmoji").textContent = s.emoji;
         document.getElementById("storyTitle").textContent = s.title;
         document.getElementById("storyBody").textContent = s.body;
-        const cta = document.getElementById("storyCta");
-        cta.href = s.cta;
+        document.getElementById("storyCta").href = s.cta;
         storyModal.hidden = false;
         storyFill.style.transition = "none";
         storyFill.style.width = "0%";
@@ -742,13 +825,7 @@
         storyModal.hidden = true;
       });
 
-      const notifyBtn = document.getElementById("notifyBtn");
-      notifyBtn?.addEventListener("click", () => {
-        const on = notifyBtn.classList.toggle("active");
-        notifyBtn.textContent = on ? "공지 알림 켜짐" : "알림 받기";
-      });
-
-      renderGrid();
+      render();
     })();
   </script>
 </body>
