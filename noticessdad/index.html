@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>개인 노트 &amp; 아이디어 보관함 — Super.so Edition</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+  <style>
+    :root {
+      --bg: #f8fafc; --card: #ffffff; --text: #0f172a; --muted: #64748b;
+      --border: #e2e8f0; --accent: #2563eb; --accent-soft: #eff6ff;
+    }
+    body.dark {
+      --bg: #0b0f19; --card: #111827; --text: #f8fafc; --muted: #94a3b8;
+      --border: #1e293b; --accent: #38bdf8; --accent-soft: #1e293b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: 'Pretendard', -apple-system, sans-serif;
+      background: var(--bg); color: var(--text); line-height: 1.7;
+      transition: background 0.2s, color 0.2s;
+    }
+    .s-navbar {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px); background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px; display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+    }
+    body.dark .s-navbar { background: rgba(17,24,39,0.85); }
+    .s-brand { font-weight: 800; font-size: 16px; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .s-nav-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .s-nav-btn {
+      padding: 6px 12px; border-radius: 99px; border: 1px solid var(--border);
+      background: var(--card); color: var(--text); font-weight: 600; font-size: 13px; cursor: pointer;
+    }
+    .s-nav-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .s-container { max-width: 880px; margin: 32px auto 90px; padding: 0 20px; }
+    .s-hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #0ea5e9 100%);
+      color: #fff; padding: 38px 36px; border-radius: 20px; margin-bottom: 28px;
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.18);
+    }
+    .s-hero-icon { font-size: 44px; margin-bottom: 8px; }
+    .s-hero-title { margin: 0 0 8px 0; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
+    .s-hero-meta { font-size: 13px; opacity: 0.85; }
+    .s-content {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px 36px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .s-h1 { font-size: 24px; font-weight: 800; margin: 24px 0 10px; }
+    .s-h2 { font-size: 19px; font-weight: 700; margin: 20px 0 8px; color: var(--accent); }
+    .s-h3 { font-size: 16px; font-weight: 700; margin: 14px 0 6px; }
+    .s-p { margin: 6px 0; font-size: 15.5px; }
+    .s-callout {
+      background: var(--accent-soft); border-left: 4px solid var(--accent);
+      padding: 14px 18px; border-radius: 10px; display: flex; gap: 12px; margin: 12px 0; font-weight: 500;
+    }
+    .s-quote { border-left: 4px solid var(--text); padding-left: 16px; margin: 12px 0; font-style: italic; }
+    .s-todo { display: flex; align-items: center; gap: 10px; margin: 6px 0; font-size: 15px; }
+    .s-todo.done span { text-decoration: line-through; color: var(--muted); }
+    .s-bullet { display: flex; gap: 10px; margin: 5px 0; font-size: 15px; }
+    .s-toggle { border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; margin: 10px 0; }
+    .s-toggle summary { font-weight: 700; cursor: pointer; }
+    .s-toggle-body { margin-top: 8px; padding-left: 14px; color: var(--muted); }
+    .s-subpage-card {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 18px; border-radius: 12px; border: 1.5px solid var(--border);
+      margin: 10px 0; cursor: pointer; font-weight: 700; transition: all 0.15s;
+    }
+    .s-subpage-card:hover { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-1px); }
+    .s-arrow { font-size: 12.5px; color: var(--accent); }
+    .s-table-wrap { overflow-x: auto; margin: 14px 0; }
+    .s-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .s-table th, .s-table td { border: 1px solid var(--border); padding: 10px 12px; text-align: left; }
+    .s-table th { background: var(--accent-soft); font-weight: 700; }
+    .s-inline-db { margin: 18px 0; }
+    .s-inline-db-head { font-weight: 800; font-size: 16px; margin-bottom: 10px; }
+    .s-db-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+    .s-db-card { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--bg); }
+    .s-db-card-title { font-weight: 700; margin-bottom: 8px; }
+    .s-db-card-meta { display: flex; gap: 6px; flex-wrap: wrap; font-size: 12px; color: var(--muted); }
+    .s-badge { background: var(--accent-soft); color: var(--accent); padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+    .s-drive-card { border: 1.5px solid var(--border); border-radius: 12px; padding: 14px; margin: 12px 0; background: var(--bg); }
+    .s-drive-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .s-drive-title { font-weight: 800; font-size: 14.5px; }
+    .s-drive-meta { font-size: 12px; color: var(--muted); }
+    .s-drive-btn { padding: 6px 12px; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; font-size: 12.5px; font-weight: 700; }
+    .s-drive-iframe { width: 100%; height: 420px; border: none; border-radius: 8px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <nav class="s-navbar">
+    <div class="s-brand" onclick="showPage('page-personal-notes')">
+      <span>⚡</span><span>개인 노트 &amp; 아이디어 보관함</span>
+    </div>
+    <div class="s-nav-tabs">
+      <button class="s-nav-btn active" id="nav-page-personal-notes" onclick="showPage('page-personal-notes')">💡 개인 노트 &amp; 아이디어 보관함</button>
+      <button class="s-nav-btn" onclick="document.body.classList.toggle('dark')">🌓 테마 전환</button>
+    </div>
+  </nav>
+  <main class="s-container">
+    
+        <section class="s-page-sec" id="sec-page-personal-notes" style="display:block;">
+          <div class="s-hero">
+            <div class="s-hero-icon">💡</div>
+            <h1 class="s-hero-title">개인 노트 &amp; 아이디어 보관함</h1>
+            <div class="s-hero-meta">안태일 선생님 워크스페이스 · 최종 업데이트: 2026-11-21</div>
+          </div>
+          <div class="s-content">
+            <h3 class="s-h2" style="">💡 자유 메모장</h3>
+<p class="s-p" style="">아무 줄에서나 &#x27;/&#x27;를 입력하여 노션 블록을 추가하거나, 좌측 &#x27;⋮⋮&#x27; 핸들을 드래그하여 블록 순서를 바꿔보d세요.</p>
+<div style="height:8px;"></div>
+<p class="s-p" style="">tpdy</p>
+<div style="height:8px;"></div>
+<p class="s-p" style="">ㅅ[ㅔ여ㅛ</p>
+<div style="height:8px;"></div>
+<p class="s-p" style="">- 움</p>
+<div style="height:8px;"></div>
+<p class="s-p" style="">/ 이건 도</p>
+<div style="height:8px;"></div>
+<div style="height:8px;"></div>
+<div style="height:8px;"></div>
+<div class="s-table-wrap"><table class="s-table"><tr><th>항목 1</th><th>항목 2</th><th>항목 3</th><th>항목 4</th></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></table></div>
+<p class="s-p" style="">/파일</p>
+<div style="height:8px;"></div>
+
+            <div class="s-drive-card" style="">
+              <div class="s-drive-top">
+                <div>
+                  <div class="s-drive-title">📂 안태일_페이스북_문체_학습_마스터_프로필.hwpx</div>
+                  <div class="s-drive-meta">G:\내 드라이브\20_집필·콘텐츠 · 19.2 KB</div>
+                </div>
+                <a href="https://drive.google.com/file/d/1OSammW23PxswXjmMYceC-H55kzPlLwM7/view?usp=sharing" target="_blank" class="s-drive-btn">☁️ Google Drive에서 열기</a>
+              </div>
+              <iframe src="https://drive.google.com/file/d/1OSammW23PxswXjmMYceC-H55kzPlLwM7/preview" class="s-drive-iframe"></iframe>
+            </div>
+            
+<div style="height:8px;"></div>
+
+            <div class="s-drive-card" style="">
+              <div class="s-drive-top">
+                <div>
+                  <div class="s-drive-title">📂 미래엔_안태일_원고.hwp</div>
+                  <div class="s-drive-meta">G:\내 드라이브\10_학교(운양고)\19_지난자료\강의 알바\2015년 원고 · 6406.5 KB</div>
+                </div>
+                <a href="https://drive.google.com/file/d/11mkIPdMc9BUnARXvsoX4yd9q_oOVxJR0/view?usp=sharing" target="_blank" class="s-drive-btn">☁️ Google Drive에서 열기</a>
+              </div>
+              <iframe src="https://drive.google.com/file/d/11mkIPdMc9BUnARXvsoX4yd9q_oOVxJR0/preview" class="s-drive-iframe"></iframe>
+            </div>
+            
+          </div>
+        </section>
+        
+  </main>
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.s-page-sec').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.s-nav-btn').forEach(el => el.classList.remove('active'));
+      const sec = document.getElementById('sec-' + id);
+      if (sec) sec.style.display = 'block';
+      const nav = document.getElementById('nav-' + id);
+      if (nav) nav.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
